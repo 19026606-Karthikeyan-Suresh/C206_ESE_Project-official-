@@ -97,7 +97,6 @@ public class C206_CaseStudy {
 				} else {
 					System.out.println("Invalid type");
 				}
-				}
 
 			} else if (option == 3) {
 
@@ -172,8 +171,8 @@ public class C206_CaseStudy {
 			}
 
 		}
-
 	}
+
 // -------------------Program Layouts -----------------
 	public static void userTypeMenu() {
 		C206_CaseStudy.setHeader("USER TYPE MENU");
@@ -211,7 +210,7 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 //-------Program Layouts------------------------------------------
-	
+
 	public static String retrieveAllMenuItems(ArrayList<MenuItem> menuItemList) {
 		String output = "";
 		for (int i = 0; i < menuItemList.size(); i++) {
@@ -310,8 +309,7 @@ public class C206_CaseStudy {
 	}
 
 	// method to check if the menu items fall under the input range - Bernadette
-	public static boolean doViewByPriceRange(ArrayList<MenuItem> menuItemList, double minPrice,
-			double maxPrice) {
+	public static boolean doViewByPriceRange(ArrayList<MenuItem> menuItemList, double minPrice, double maxPrice) {
 		boolean canViewByPriceRange = false;
 
 		String output = String.format("%-15s %-15s %-10s\n", "CATEGORY", "NAME", "PRICE");
@@ -375,7 +373,7 @@ public class C206_CaseStudy {
 		return canSearchByCategory;
 
 	}
-	
+
 	// method to search menu items by category - Bernadette
 	public static void searchMenuItemsByCategory(ArrayList<MenuItem> menuItemList) {
 		C206_CaseStudy.viewAllMenuItem(menuItemList);
@@ -393,44 +391,45 @@ public class C206_CaseStudy {
 			System.out.println("Category found");
 		}
 	}
-	
+
 	// Kenneth
 	public static String viewAllOrder(ArrayList<Order> orderList, String user) {
 		String s = "";
 		int u = 0;
-		for(Order i: orderList) {
-			if(user.equalsIgnoreCase(i.getUsername())) {
+		for (Order i : orderList) {
+			if (user.equalsIgnoreCase(i.getUsername())) {
 				u++;
-				for(MenuItem j: i.getItems()) {
+				for (MenuItem j : i.getItems()) {
 					String pattern = "Type: %s, Name: %s, Price: %.2f\n";
 					s += String.format(pattern, j.getCategory(), j.getName(), j.getPrice());
 				}
 			}
 		}
-		if(u == 0)
+		if (u == 0)
 			System.out.println("Invalid Account name!\n");
 		return s;
 	}
 
 	// Kenneth
-	public static void storeOrder(ArrayList<Order> orderList, String user, ArrayList<MenuItem> menuItemList, String itemName) {
+	public static void storeOrder(ArrayList<Order> orderList, String user, ArrayList<MenuItem> menuItemList,
+			String itemName) {
 		int u = 0;
 		int k = 0;
-		for(int i = 0; i< orderList.size(); i++) {
-			if(user.equalsIgnoreCase(orderList.get(i).getUsername())) { 
+		for (int i = 0; i < orderList.size(); i++) {
+			if (user.equalsIgnoreCase(orderList.get(i).getUsername())) {
 				u++;
-				for(int j = 0; j< menuItemList.size(); j++) {
-					if(itemName.equalsIgnoreCase(menuItemList.get(j).getName())) {
+				for (int j = 0; j < menuItemList.size(); j++) {
+					if (itemName.equalsIgnoreCase(menuItemList.get(j).getName())) {
 						k++;
-						orderList.get(i).getItems().add(menuItemList.get(j));	
+						orderList.get(i).getItems().add(menuItemList.get(j));
 						System.out.println("Item Stored!");
 					}
 				}
 			}
 		}
-		if(u == 0)
+		if (u == 0)
 			System.out.println("Invalid Account name!");
-		else if(k == 0)
+		else if (k == 0)
 			System.out.println("Invalid Menu Item!");
 	}
 
@@ -438,7 +437,7 @@ public class C206_CaseStudy {
 	public static void deleteOrder(ArrayList<Order> orderList, String user) {
 		int u = 0;
 		for (int i = 0; i < orderList.size(); i++) {
-			if (user.equalsIgnoreCase(orderList.get(i).getUsername())) { 
+			if (user.equalsIgnoreCase(orderList.get(i).getUsername())) {
 				u++;
 				orderList.remove(i);
 				System.out.println("Orders Deleted!");
@@ -446,52 +445,52 @@ public class C206_CaseStudy {
 //				for (int j = 0; j < orderList.get(i).getItems().size(); j++) {
 //					if (itemToDelete.equalsIgnoreCase(orderList.get(i).getItems().get(j).getName())) 
 //						orderList.get(i).getItems().remove(j);
-			//				}
+			// }
 		}
-		if(u == 0)
+		if (u == 0)
 			System.out.println("Invalid Account name!");
 	}
 
 	public static void updateOrder(ArrayList<Order> orderList, String user, String status, boolean takeaway) {
 		int u = 0;
 		for (int i = 0; i < orderList.size(); i++) {
-			if (user.equalsIgnoreCase(orderList.get(i).getUsername())) { 
+			if (user.equalsIgnoreCase(orderList.get(i).getUsername())) {
 				u++;
 				orderList.get(i).setStatus(status);
 				orderList.get(i).setTakeaway(takeaway);
 				System.out.println("Status and Takeaway Tag updated!");
 			}
 		}
-		if(u == 0)
+		if (u == 0)
 			System.out.println("Invalid Account name!");
 	}
-	
+
 	public static void updateOrder(ArrayList<Order> orderList, String user, String status) {
 		int u = 0;
 		for (int i = 0; i < orderList.size(); i++) {
-			if (user.equalsIgnoreCase(orderList.get(i).getUsername())) { 
+			if (user.equalsIgnoreCase(orderList.get(i).getUsername())) {
 				u++;
 				orderList.get(i).setStatus(status);
 				System.out.println("Status updated!");
 			}
 		}
-		if(u == 0)
+		if (u == 0)
 			System.out.println("Invalid Account name!");
 	}
 
 	public static void updateOrder(ArrayList<Order> orderList, String user, boolean takeaway) {
 		int u = 0;
 		for (int i = 0; i < orderList.size(); i++) {
-			if (user.equalsIgnoreCase(orderList.get(i).getUsername())) { 
+			if (user.equalsIgnoreCase(orderList.get(i).getUsername())) {
 				u++;
 				orderList.get(i).setTakeaway(takeaway);
 				System.out.println("Status and Takeaway Tag updated!!");
 			}
 		}
-		if(u == 0)
+		if (u == 0)
 			System.out.println("Invalid Account name!");
 	}
-	
+
 	public static void deliveryOrder(ArrayList<Order> orderList, String user, String deliveryTime) {
 		if (deliveryTime.length() == 4 && deliveryTime.split("")[0].matches("\\d")) {
 			int u = 0;
@@ -506,7 +505,7 @@ public class C206_CaseStudy {
 			dTI[1] = Integer.valueOf(dTS[1]);
 
 			for (int i = 0; i < orderList.size(); i++) {
-				if (user.equalsIgnoreCase(orderList.get(i).getUsername())) { 
+				if (user.equalsIgnoreCase(orderList.get(i).getUsername())) {
 					u++;
 					if (dTI[0] >= 24 && dTI[1] < 59 && Integer.parseInt(s) > 2359) {
 						orderList.get(i).setDeliveryTime(deliveryTime);
@@ -517,7 +516,7 @@ public class C206_CaseStudy {
 					}
 				}
 			}
-			if(u == 0)
+			if (u == 0)
 				System.out.println("Invalid Account name!");
 		}
 	}
@@ -526,22 +525,22 @@ public class C206_CaseStudy {
 		String s = "";
 		int u = 0;
 		double tot = 0.0;
-		for(Order i: orderList) {
-			if(user.equalsIgnoreCase(i.getUsername())) {
+		for (Order i : orderList) {
+			if (user.equalsIgnoreCase(i.getUsername())) {
 				u++;
-				for(MenuItem j: i.getItems()) {
+				for (MenuItem j : i.getItems()) {
 					String pattern = "Category: %s, Name: %s, Price: $%.2f\n";
 					tot += j.getPrice();
 					s += String.format(pattern, j.getCategory(), j.getName(), j.getPrice());
 				}
 			}
 		}
-		if(u == 0)
+		if (u == 0)
 			System.out.println("Invalid Account name!\n");
 		s = String.format("Total amount: $%.2f \n%s", tot, s);
 		return s;
 	}
-	
+
 	// Karthik
 	public void viewAllPurchaseOrder() {
 
@@ -557,5 +556,4 @@ public class C206_CaseStudy {
 
 }
 
-	//Ariezal Methods
-
+// Ariezal Methods
