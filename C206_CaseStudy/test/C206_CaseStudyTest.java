@@ -20,7 +20,6 @@ public class C206_CaseStudyTest {
 
 	// Kenneth
 	private Order o1;
-	private Order o2;
 	private MenuItem m3;
 	private MenuItem m4;
 
@@ -59,7 +58,7 @@ public class C206_CaseStudyTest {
 
 	}
 
-	@Test
+	@Test // Bernadette
 	public void doUpdateMenuItemNameTest() {
 		// boundary condition
 		assertNotNull("Test if there is valid MenuItem arraylist to add to", menuItemList);
@@ -72,7 +71,7 @@ public class C206_CaseStudyTest {
 		assertFalse("Test if the existing menu item is updated its name?", ok);
 	}
 
-	@Test
+	@Test // Bernadette
 	public void doUpdateMenuItemPriceTest() {
 		// boundary condition
 		assertNotNull("Test if there is valid MenuItem arraylist to add to", menuItemList);
@@ -85,7 +84,7 @@ public class C206_CaseStudyTest {
 		assertFalse("Test if the existing menu item is updated its price?", ok);
 	}
 
-	@Test
+	@Test // Bernadette
 	public void doViewMenuItemByPriceRangeTest() {
 		// Given an empty list, after adding 4 items, test if the arraylist size is 6 -
 		// normal condition
@@ -106,7 +105,7 @@ public class C206_CaseStudyTest {
 		assertFalse("Test if these menu items fall under the range between $4 to $5", ok);
 	}
 
-	@Test
+	@Test // Bernadette
 	public void canSearchByCategory() {
 		// Given an empty list, after adding 4 items, test if the arraylist size is 6 -
 		// normal condition
@@ -162,7 +161,7 @@ public class C206_CaseStudyTest {
 		// test if the list of order menu items retrieved from the C206 Case Study is
 		// empty -error
 		C206_CaseStudy.storeOrder(orderList, "Jerry", orderMenuList, "Invalid Item");
-//		MenuItem testOutput = null;
+        // MenuItem testOutput = null;
 		assertEquals("Check that item for orderMenuList was not added to OrderList and is empty", true,
 				orderList.get(0).getItems().isEmpty());
 
@@ -303,12 +302,6 @@ public class C206_CaseStudyTest {
 
 	@After
 	public void tearDown() throws Exception {
-		menu1 = null;
-		menu2 = null;
-		menu3 = null;
-		menu4 = null;
-		menu5 = null;
-		menu6 = null;
 
 	}
 
