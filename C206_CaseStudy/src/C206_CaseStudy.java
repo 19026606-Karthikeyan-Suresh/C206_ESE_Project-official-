@@ -30,8 +30,6 @@ public class C206_CaseStudy {
 		while (option != 5) {
 			optionMenu();
 
-			
-			C206_CaseStudy.optionMenu();
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
@@ -39,6 +37,8 @@ public class C206_CaseStudy {
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
+					// Bernadette
+					
 					C206_CaseStudy.viewAllMenuItem(menuItemList);
 					optionMenuItemList();
 					int optionMenuItem = Helper.readInt("Enter option for menu item > ");
@@ -71,6 +71,7 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 2) {
+				// Ariezal
 
 			} else if (option == 3) {
 
@@ -135,6 +136,7 @@ public class C206_CaseStudy {
 				System.out.println(C206_CaseStudy.summaryOrder(orderList, user));
 
 			} else if (option == 4) {
+				// Karthik
 
 			} else if (option == 5) {
 

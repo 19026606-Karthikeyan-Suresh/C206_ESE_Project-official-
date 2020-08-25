@@ -35,7 +35,7 @@ public class C206_CaseStudyTest {
 	@Before
 	public void setUp() throws Exception {
 
-		// prepare test data
+		// Bernadette
 		menu1 = new MenuItem("Soda", "Sprite", 1.50);
 		menu2 = new MenuItem("Smoothies", "Banana", 3.50);
 		menu3 = new MenuItem("Pizzas", "Cheese", 3.00);
