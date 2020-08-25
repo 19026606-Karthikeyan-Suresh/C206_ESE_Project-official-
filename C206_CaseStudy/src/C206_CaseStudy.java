@@ -5,8 +5,8 @@ public class C206_CaseStudy {
 	private static final int itemType = 0;
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-		
+
+		//Karthik
 		ArrayList<PurchaseOrder> purchaseOrderList = new ArrayList<PurchaseOrder>();
 		purchaseOrderList.add(new PurchaseOrder("Strawberry", 10, 10.50, "21/1/2020"));
 		purchaseOrderList.add(new PurchaseOrder("Kiwi", 11, 7.50, "21/2/2020"));
@@ -14,7 +14,7 @@ public class C206_CaseStudy {
 		purchaseOrderList.add(new PurchaseOrder("straws", 100, 10.50, "20/1/2020"));
 		purchaseOrderList.add(new PurchaseOrder("Milo powder", 3, 14.50, "24/1/2020"));
 		
-=======
+
 
 		// Bernadette
 		ArrayList<MenuItem> menuItemList = new ArrayList<MenuItem>();
@@ -35,7 +35,7 @@ public class C206_CaseStudy {
 		menuItemList2.add(new MenuItem("Sweets", "Lollipops", 2.00));
 		orderList.add(new Order("Jerry", "pending", true, orderMenu, "now"));
 
->>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
+
 		int option = 0;
 
 		while (option != 5) {
@@ -114,7 +114,7 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 3) {
-<<<<<<< HEAD
+
 				userTypeMenu();
 				
 			} else if (option == 4) { //Karthik
@@ -130,7 +130,7 @@ public class C206_CaseStudy {
 				}
 				
 				
-=======
+
 
 				// Kenneth
 				int itemType = 0;
@@ -192,14 +192,9 @@ public class C206_CaseStudy {
 			} else if (option == 4) {
 				// Karthik
 
->>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
-			} else if (option == 5) {
-<<<<<<< HEAD
-				
-				
-=======
 
->>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
+			} else if (option == 5) {
+
 				System.out.println("Bye!");
 			} else {
 				System.out.println("Invalid option");
@@ -716,8 +711,8 @@ public class C206_CaseStudy {
 
 }
 
-<<<<<<< HEAD
 
-=======
+
+
 // Ariezal Methods
->>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
+
