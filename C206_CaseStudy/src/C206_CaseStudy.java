@@ -74,9 +74,30 @@ public class C206_CaseStudy {
 				} else {
 					System.out.println("Invalid type");
 				}
-
+// ADD, VIEW AND DELETE ACCOUNT OPTIONS FOR USER TO CHOOSE.
 			} else if (option == 2) {
 				// Ariezal
+				C206_CaseStudy.setHeader("View, Add, Delete Account");
+				userTypeMenu();
+
+				int itemType = Helper.readInt("Enter option to select type > ");
+		
+				if (itemType == 1) {
+					// View All Accounts
+					C206_CaseStudy.viewAllAccounts(accountList);
+					
+				} else if (itemType == 2) {
+					// Add Account
+					C206_CaseStudy.addAccount(accountList);
+
+				} else if (itemType == 3) {
+					// Delete Account
+					C206_CaseStudy.deleteAccount(accountList);
+
+				} else {
+					System.out.println("Invalid type");
+				}
+				}
 
 			} else if (option == 3) {
 
@@ -153,7 +174,7 @@ public class C206_CaseStudy {
 		}
 
 	}
-
+// -------------------Program Layouts -----------------
 	public static void userTypeMenu() {
 		C206_CaseStudy.setHeader("USER TYPE MENU");
 		System.out.println("1. View All");
@@ -189,7 +210,8 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
-
+//-------Program Layouts------------------------------------------
+	
 	public static String retrieveAllMenuItems(ArrayList<MenuItem> menuItemList) {
 		String output = "";
 		for (int i = 0; i < menuItemList.size(); i++) {
@@ -534,3 +556,6 @@ public class C206_CaseStudy {
 	}
 
 }
+
+	//Ariezal Methods
+
