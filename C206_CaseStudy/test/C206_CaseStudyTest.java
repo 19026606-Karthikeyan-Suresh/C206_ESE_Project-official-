@@ -57,6 +57,12 @@ public class C206_CaseStudyTest {
 
 
 	}
+	
+	@Test
+	public void c206_test() {
+		// fail("Not yet implemented");
+		assertTrue("C206_CaseStudy_SampleTest ", true);
+	}
 
 	@Test // Bernadette
 	public void doUpdateMenuItemNameTest() {
@@ -125,12 +131,6 @@ public class C206_CaseStudyTest {
 		ok = C206_CaseStudy.canSearchByCategory(menuItemList, "Seafood");
 		assertFalse("Test if menu items can search by Seafood", ok);
 
-	}
-
-	@Test
-	public void c206_test() {
-		// fail("Not yet implemented");
-		assertTrue("C206_CaseStudy_SampleTest ", true);
 	}
 
 	@Test // Kenneth

@@ -8,7 +8,7 @@ public class C206_CaseStudy {
 		ArrayList<MenuItem> menuItemList = new ArrayList<MenuItem>();
 		menuItemList.add(new MenuItem("Smoothies", "Strawberry", 3.50));
 		menuItemList.add(new MenuItem("Smoothies", "Kiwi", 2.50));
-		menuItemList.add(new MenuItem("Soda", "Sprite", 1.50));
+		menuItemList.add(new MenuItem("Soda", "Fanta", 2.00));
 		menuItemList.add(new MenuItem("Soda", "Coca Cola", 1.00));
 		menuItemList.add(new MenuItem("Sweets", "Lollipops", 2.00));
 		menuItemList.add(new MenuItem("Sweets", "Candies", 1.50));
@@ -48,19 +48,24 @@ public class C206_CaseStudy {
 						int chooseUpdateMenu = Helper.readInt("Choose update for menu item > ");
 
 						if (chooseUpdateMenu == 1) {
+							// update name of menu item
 							C206_CaseStudy.updateMenuItemName(menuItemList);
 						} else if (chooseUpdateMenu == 2) {
+							// update price of menu item
 							C206_CaseStudy.updateMenuItemPrice(menuItemList);
 						} else {
 							System.out.println("Invalid choose update");
 						}
 					} else if (optionMenuItem == 2) {
+						// view menu items by price range
 						viewMenuItemsByPriceRange(menuItemList);
 					} else if (optionMenuItem == 3) {
+						// search menu items by category
 						searchMenuItemsByCategory(menuItemList);
 					}
 
 				} else if (itemType == 2) {
+					// add menu item
 					MenuItem m = inputMenuItem();
 					C206_CaseStudy.addMenuItem(menuItemList, m);
 
@@ -194,7 +199,7 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	// method to view MenuItem objects in ArrayList
+	// method to view MenuItem objects in ArrayList - Bernadette
 	public static void viewAllMenuItem(ArrayList<MenuItem> menuItemList) {
 		C206_CaseStudy.setHeader("MENU ITEM LIST");
 		String output = String.format("%-15s %-15s %-10s\n", "CATEGORY", "NAME", "PRICE");
@@ -203,7 +208,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 
-	// method to create MenuItem object
+	// method to create MenuItem object - Bernadette
 	public static MenuItem inputMenuItem() {
 		String category = Helper.readString("Enter category > ");
 		String name = Helper.readString("Enter name > ");
@@ -213,14 +218,14 @@ public class C206_CaseStudy {
 		return m;
 	}
 
-	// method to add the MenuItem object in ArrayList
+	// method to add the MenuItem object in ArrayList - Bernadette
 	public static void addMenuItem(ArrayList<MenuItem> menuItemList, MenuItem m) {
 
 		menuItemList.add(m);
 		System.out.println("Menu Item added");
 	}
 
-	// method to check if the menu item name is updated
+	// method to check if the menu item name is updated - Bernadette
 	public static boolean doUpdateMenuItemName(ArrayList<MenuItem> menuItemList, String category, String name,
 			double price) {
 		boolean isNameUpdated = false;
@@ -236,7 +241,7 @@ public class C206_CaseStudy {
 		return isNameUpdated;
 	}
 
-	// method for update menu item name
+	// method for update menu item name - Bernadette
 	public static void updateMenuItemName(ArrayList<MenuItem> menuItemList) {
 		C206_CaseStudy.viewAllMenuItem(menuItemList);
 		C206_CaseStudy.setHeader("UPDATE MENU ITEM NAME");
@@ -251,7 +256,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// method to check if the menu item price is updated
+	// method to check if the menu item price is updated - Bernadette
 	public static boolean doUpdateMenuItemPrice(ArrayList<MenuItem> menuItemList, String category, String name,
 			double price) {
 		boolean isPriceUpdated = false;
@@ -267,7 +272,7 @@ public class C206_CaseStudy {
 		return isPriceUpdated;
 	}
 
-	// method for update menu item price
+	// method for update menu item price - Bernadette
 	public static void updateMenuItemPrice(ArrayList<MenuItem> menuItemList) {
 		C206_CaseStudy.viewAllMenuItem(menuItemList);
 		C206_CaseStudy.setHeader("UPDATE MENU ITEM PRICE");
@@ -282,6 +287,7 @@ public class C206_CaseStudy {
 		}
 	}
 
+	// method to check if the menu items fall under the input range - Bernadette
 	public static boolean doViewByPriceRange(ArrayList<MenuItem> menuItemList, double minPrice,
 			double maxPrice) {
 		boolean canViewByPriceRange = false;
@@ -305,6 +311,7 @@ public class C206_CaseStudy {
 		return canViewByPriceRange;
 	}
 
+	// method to view menu items by price range - Bernadette
 	public static void viewMenuItemsByPriceRange(ArrayList<MenuItem> menuItemList) {
 		C206_CaseStudy.viewAllMenuItem(menuItemList);
 		C206_CaseStudy.setHeader("VIEW MENU ITEMS BY PRICE RANGE");
@@ -323,7 +330,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	// method to check if menu items can search by category
+	// method to check if menu items can search by category - Bernadette
 	public static boolean canSearchByCategory(ArrayList<MenuItem> menuItemList, String searchCategory) {
 		boolean canSearchByCategory = false;
 
@@ -347,7 +354,7 @@ public class C206_CaseStudy {
 
 	}
 	
-	// method to search menu items by category
+	// method to search menu items by category - Bernadette
 	public static void searchMenuItemsByCategory(ArrayList<MenuItem> menuItemList) {
 		C206_CaseStudy.viewAllMenuItem(menuItemList);
 		C206_CaseStudy.setHeader("SEARCH MENU ITEMS BY CATEGORY");
@@ -363,10 +370,6 @@ public class C206_CaseStudy {
 		} else {
 			System.out.println("Category found");
 		}
-	}
-
-	public void deleteAccount() {
-
 	}
 	
 	// Kenneth
