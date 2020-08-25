@@ -15,7 +15,6 @@ public class C206_CaseStudy {
 		menuItemList.add(new MenuItem("Beverages", "Lemon Tea", 1.50));
 		menuItemList.add(new MenuItem("Beverages", "Milo", 3.50));
 
-		
 		// Kenneth
 		ArrayList<Order> orderList = new ArrayList<Order>();
 		ArrayList<MenuItem> orderMenu = new ArrayList<>();
@@ -24,7 +23,6 @@ public class C206_CaseStudy {
 		menuItemList2.add(new MenuItem("Sweets", "Lollipops", 2.00));
 		orderList.add(new Order("Jerry", "pending", true, orderMenu, "now"));
 
-		
 		int option = 0;
 
 		while (option != 5) {
@@ -38,7 +36,7 @@ public class C206_CaseStudy {
 
 				if (itemType == 1) {
 					// Bernadette
-					
+
 					C206_CaseStudy.viewAllMenuItem(menuItemList);
 					optionMenuItemList();
 					int optionMenuItem = Helper.readInt("Enter option for menu item > ");
@@ -66,10 +64,14 @@ public class C206_CaseStudy {
 
 				} else if (itemType == 2) {
 					// add menu item
-					MenuItem m = inputMenuItem();
-					C206_CaseStudy.addMenuItem(menuItemList, m);
+					C206_CaseStudy.viewAllMenuItem(menuItemList);
+					MenuItem addItem = addItem();
+					C206_CaseStudy.addMenuItem(menuItemList, addItem);
 
 				} else if (itemType == 3) {
+					// delete menu item
+					C206_CaseStudy.deleteMenuItem(menuItemList);
+					
 
 				} else {
 					System.out.println("Invalid type");
@@ -81,18 +83,18 @@ public class C206_CaseStudy {
 				userTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select type > ");
-		
+
 				if (itemType == 1) {
 					// View All Accounts
-					C206_CaseStudy.viewAllAccounts(accountList);
-					
+//					C206_CaseStudy.viewAllAccounts(accountList);
+
 				} else if (itemType == 2) {
 					// Add Account
-					C206_CaseStudy.addAccount(accountList);
+//					C206_CaseStudy.addAccount(accountList);
 
 				} else if (itemType == 3) {
 					// Delete Account
-					C206_CaseStudy.deleteAccount(accountList);
+//					C206_CaseStudy.deleteAccount(accountList);
 
 				} else {
 					System.out.println("Invalid type");
@@ -103,13 +105,9 @@ public class C206_CaseStudy {
 				// Kenneth
 				int itemType = 0;
 				String user = Helper.readString("Enter Account Name: ");
-				while(itemType != 6) {
-					C206_CaseStudy.setHeader("1. View Order(s) "
-							+ "\n2. Add Order "
-							+ "\n3. Delete Order "
-							+ "\n4. Update Order "
-							+ "\n5. Set Order Delivery Time "
-							+ "\n6. Quit Order Menu");
+				while (itemType != 6) {
+					C206_CaseStudy.setHeader("1. View Order(s) " + "\n2. Add Order " + "\n3. Delete Order "
+							+ "\n4. Update Order " + "\n5. Set Order Delivery Time " + "\n6. Quit Order Menu");
 					itemType = Helper.readInt("Enter option to select type > ");
 					System.out.println("");
 
@@ -122,37 +120,38 @@ public class C206_CaseStudy {
 					} else if (itemType == 2) {
 						// Add Order
 						itemName = Helper.readString("Enter name of Item in Menu: ");
-						System.out.println("");					
+						System.out.println("");
 						C206_CaseStudy.storeOrder(orderList, user, menuItemList2, itemName);
 
 					} else if (itemType == 3) {
 						// Delete Order
 						System.out.println("");
 						C206_CaseStudy.deleteOrder(orderList, user);
-					}else if (itemType == 4) {
-						//Update Order
+					} else if (itemType == 4) {
+						// Update Order
 						String st = "";
 						st = Helper.readString("Enter status of Order: ");
 						char c = Helper.readChar("Enter takeaway tag of order (y/n): ");
 						boolean b = false;
-						if(c == 'y' || c == 'Y')
+						if (c == 'y' || c == 'Y')
 							b = true;
 						else if (c == 'n' || c == 'N')
 							b = false;
 
-						if(st == "")
+						if (st == "")
 							C206_CaseStudy.updateOrder(orderList, user, b);
-						else if(c == '\u0000' || c != 'y'|| c != 'Y'|| c != 'n'|| c != 'N')
+						else if (c == '\u0000' || c != 'y' || c != 'Y' || c != 'n' || c != 'N')
 							C206_CaseStudy.updateOrder(orderList, user, st);
-						else if(st == "" && (c == '\u0000' || c != 'y'|| c != 'Y'|| c != 'n'|| c != 'N'))
+						else if (st == "" && (c == '\u0000' || c != 'y' || c != 'Y' || c != 'n' || c != 'N'))
 							System.out.println("Please at least enter the status of the order.");
 						else
 							C206_CaseStudy.updateOrder(orderList, user, st, b);
 
-					} else if(itemType == 5) {
-						String time = Helper.readString("Enter desired delivery time in 24 hour format, with at least a 24 hour gap before delivery: ");
+					} else if (itemType == 5) {
+						String time = Helper.readString(
+								"Enter desired delivery time in 24 hour format, with at least a 24 hour gap before delivery: ");
 						C206_CaseStudy.deliveryOrder(orderList, user, time);
-					} else if(itemType == 6) {
+					} else if (itemType == 6) {
 
 					} else {
 						System.out.println("\nInvalid type");
@@ -230,20 +229,54 @@ public class C206_CaseStudy {
 	}
 
 	// method to create MenuItem object - Bernadette
-	public static MenuItem inputMenuItem() {
+	public static MenuItem addItem() {
 		String category = Helper.readString("Enter category > ");
 		String name = Helper.readString("Enter name > ");
 		double price = Helper.readDouble("Enter price > ");
 
-		MenuItem m = new MenuItem(category, name, price);
-		return m;
+		MenuItem addItem = new MenuItem(category, name, price);
+		return addItem;
 	}
 
 	// method to add the MenuItem object in ArrayList - Bernadette
-	public static void addMenuItem(ArrayList<MenuItem> menuItemList, MenuItem m) {
+	public static void addMenuItem(ArrayList<MenuItem> menuItemList, MenuItem addItem) {
 
-		menuItemList.add(m);
+		menuItemList.add(addItem);
 		System.out.println("Menu Item added");
+	}
+
+	// method to check if the menu item name is deleted - Bernadette
+	public static boolean doDeleteMenuItem(ArrayList<MenuItem> menuItemList, String category, String name,
+			double price) {
+		boolean isDeleted = false;
+
+		for (int i = 0; i < menuItemList.size(); i++) {
+			String getCategory = menuItemList.get(i).getCategory();
+			String getName = menuItemList.get(i).getName();
+			double getPrice = menuItemList.get(i).getPrice();
+
+			if (category.equalsIgnoreCase(getCategory) && name.equalsIgnoreCase(getName) && price == getPrice) {
+				menuItemList.remove(i);
+				isDeleted = true;
+			}
+		}
+		return isDeleted;
+	}
+
+	// method for delete menu item name - Bernadette
+	public static void deleteMenuItem(ArrayList<MenuItem> menuItemList) {
+		C206_CaseStudy.viewAllMenuItem(menuItemList);
+		C206_CaseStudy.setHeader("DELETE MENU ITEM");
+		String category = Helper.readString("Enter category > ");
+		String newName = Helper.readString("Enter name > ");
+		double price = Helper.readDouble("Enter price > ");
+	
+		Boolean isDeleted = doDeleteMenuItem(menuItemList, category, newName, price);
+		if (isDeleted == false) {
+			System.out.println("Menu Item cannot be deleted");
+		} else {
+			System.out.println("Menu Item deleted");
+		}
 	}
 
 	// method to check if the menu item name is updated - Bernadette

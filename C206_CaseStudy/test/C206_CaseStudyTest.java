@@ -44,7 +44,7 @@ public class C206_CaseStudyTest {
 		menu6 = new MenuItem("Sweets", "Lollipops", 2.00);
 
 		menuItemList = new ArrayList<MenuItem>();
-		
+
 		// Kenneth
 		orderList = new ArrayList<Order>();
 		orderMenuList = new ArrayList<MenuItem>();
@@ -55,13 +55,59 @@ public class C206_CaseStudyTest {
 		orderMenuList.add(m3);
 		orderMenuList.add(m4);
 
-
 	}
-	
+
 	@Test
 	public void c206_test() {
 		// fail("Not yet implemented");
 		assertTrue("C206_CaseStudy_SampleTest ", true);
+	}
+
+	@Test // Bernadette
+	public void addMenuItemTest() {
+		// boundary
+		assertNotNull("Check if there is valid Menu Item arraylist to add to", menuItemList);
+		// normal
+		C206_CaseStudy.addMenuItem(menuItemList, menu1);
+		assertEquals("Check that Menu Item arraylist size is 1", 1, menuItemList.size());
+		assertSame("Check that Menu Item is added", menu1, menuItemList.get(0));
+		// normal
+		C206_CaseStudy.addMenuItem(menuItemList, menu2);
+		assertEquals("Check that Menu Item arraylist size is 2", 2, menuItemList.size());
+		assertSame("Check that Menu Item is added", menu2, menuItemList.get(1));
+	}
+
+	@Test // Bernadette
+	public void retrieveAllMenuItemsTest() {
+		// Test if Menu Item list is not null but empty - boundary
+		assertNotNull("Test if there is valid Menu Item arraylist to retrieve menu item", menuItemList);
+		// test if the list of menu items retrieved from the C206_CaseStudy is empty - boundary
+		String allMenuItems = C206_CaseStudy.retrieveAllMenuItems(menuItemList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllMenuItems", testOutput, allMenuItems);
+		// Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		C206_CaseStudy.addMenuItem(menuItemList, menu1);
+		C206_CaseStudy.addMenuItem(menuItemList, menu2);
+		assertEquals("Test that Menu Item arraylist size is 2", 2, menuItemList.size());
+		// test if the expected output string same as the list of menu items retrieved from the C206_CaseStudy
+		allMenuItems = C206_CaseStudy.retrieveAllMenuItems(menuItemList);
+		testOutput = String.format("%-15s %-15s %-10.2f\n", "Soda", "Sprite", 1.50);
+		testOutput += String.format("%-15s %-15s %-10.2f\n", "Smoothies", "Banana", 3.50);
+		assertEquals("Test that ViewAllMenuItems", testOutput, allMenuItems);
+
+	}
+	
+	@Test // Bernadette
+	public void doDeleteMenuItemTest() {
+		// boundary condition
+		assertNotNull("Test if there is valid MenuItem arraylist to add to", menuItemList);
+		C206_CaseStudy.addMenuItem(menuItemList, menu1);
+		// normal condition
+		Boolean ok = C206_CaseStudy.doDeleteMenuItem(menuItemList, "Soda", "Sprite", 1.50);
+		assertTrue("Test if the existing menu item can delete from the list", ok);
+		// error condition
+		ok = C206_CaseStudy.doDeleteMenuItem(menuItemList, "Seafood", "Shrimps", 3.00);
+		assertFalse("Test if the existing menu item can delete from the list?", ok);
 	}
 
 	@Test // Bernadette
@@ -161,7 +207,7 @@ public class C206_CaseStudyTest {
 		// test if the list of order menu items retrieved from the C206 Case Study is
 		// empty -error
 		C206_CaseStudy.storeOrder(orderList, "Jerry", orderMenuList, "Invalid Item");
-        // MenuItem testOutput = null;
+		// MenuItem testOutput = null;
 		assertEquals("Check that item for orderMenuList was not added to OrderList and is empty", true,
 				orderList.get(0).getItems().isEmpty());
 
