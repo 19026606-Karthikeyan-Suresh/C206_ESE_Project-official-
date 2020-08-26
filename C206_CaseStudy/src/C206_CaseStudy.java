@@ -2,11 +2,9 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
-	private static final int itemType = 0;
-
 	public static void main(String[] args) {
 
-		// Karthik
+		// Karthik Purchase Order Objects
 		ArrayList<PurchaseOrder> purchaseOrderList = new ArrayList<PurchaseOrder>();
 		purchaseOrderList.add(new PurchaseOrder("Strawberry", 10, 10.50, "21/1/2020"));
 		purchaseOrderList.add(new PurchaseOrder("Kiwi", 11, 7.50, "21/2/2020"));
@@ -473,10 +471,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	
-//METHODS FOR MENU -------------------------------------------------------------------------------------------------------	
-
-//METHODS FOR ACCOUNT
+//METHODS FOR ACCOUNT -----------------------------------------------------------------------------------------
 	// Add Account 
 	public static void addAccount(ArrayList<Account>accountList) {
 		C206_CaseStudy.setHeader("ADD NEW ACCOUNT");
@@ -550,11 +545,10 @@ public class C206_CaseStudy {
 			System.out.println("Account deleted! ");	
 		}
 	}
-//METHODS FOR ACCOUNT
 
+//METHODS FOR ORDER ----------------------------------------------------------------------------------------------
 		
-// Kenneth
-
+    // Kenneth
 	public static String viewAllOrder(ArrayList<Order> orderList, String user) {
 		String s = "";
 		int u = 0;
@@ -703,6 +697,7 @@ public class C206_CaseStudy {
 		return s;
 	}
 
+//METHODS FOR PURCHASE ORDER ----------------------------------------------------------------------------------------------
 	// Karthik
 	
 	// method to create MenuItem object - Karthik
@@ -864,5 +859,3 @@ public class C206_CaseStudy {
 	}
 
 }
-
-// Ariezal Methods
