@@ -524,8 +524,27 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 	
-// Delete account	
+// To check if the account has been deleted yet
+	public static boolean doDeleteAccount(ArrayList<Account> accountList, String username, String password, String userRole) {
+		boolean isDeleted = false;
+		
+		for (int i = 0; i < accountList.size(); i++) {
+			String getUsername = accountList.get(i).getUsername();
+			String getPassword= accountList.get(i).getPassword();
+			String getUserRole = accountList.get(i).getUserRole();
+			
+			if (username.equalsIgnoreCase(getUsername) && password.equalsIgnoreCase(getPassword) && userRole.equalsIgnoreCase(getUserRole)) {
+				accountList.remove(i);
+				isDeleted= true;
+			}
+		}
+		return isDeleted;
+	}
+	
+
+	// Delete account	
 	public static void deleteAccount (ArrayList<Account>accountList) {
+		
 		C206_CaseStudy.setHeader("DELETE AN ACCOUNT");
 	}
 //METHODS FOR ACCOUNT
