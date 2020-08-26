@@ -213,6 +213,32 @@ public class C206_CaseStudy {
 
 	}
 
+	public static void optionMenu() {
+		C206_CaseStudy.setHeader("OPTION MENU");
+		System.out.println("1. Menu Item");
+		System.out.println("2. Account");
+		System.out.println("3. Order");
+		System.out.println("4. Purchase Order");
+		System.out.println("5. Quit");
+
+	}
+
+	// Bernadette
+	public static void chooseUpdateMenuType() {
+		C206_CaseStudy.setHeader("UPDATE NAME OR PRICE?");
+		System.out.println("1. Update Name of Menu Item");
+		System.out.println("2. Update Price of Menu Item");
+	}
+
+	// Bernadette
+	public static void optionMenuItemList() {
+		C206_CaseStudy.setHeader("MENU ITEM OPTION");
+		System.out.println("1. Update Menu Item - Name and Price");
+		System.out.println("2. View Menu Item by Price Range");
+		System.out.println("3. Search Menu Item by Category");
+	}
+	
+	// Karthik
 	public static void POlistMenu() {
 		C206_CaseStudy.setHeader("PURCHASE ORDER MENU");
 		System.out.println("1. Add Purchase Order Item");
@@ -220,28 +246,6 @@ public class C206_CaseStudy {
 		System.out.println("3. View Purchase Order items");
 		System.out.println("4. Change delivery date");
 		System.out.println("2. Search item");
-	}
-
-	public static void optionMenu() {
-		C206_CaseStudy.setHeader("OPTION MENU");
-		System.out.println("1. Menu Item");
-		System.out.println("2. Account");
-		System.out.println("3. Order");
-		System.out.println("4. Purchase Order");
-
-	}
-
-	public static void chooseUpdateMenuType() {
-		C206_CaseStudy.setHeader("UPDATE NAME OR PRICE?");
-		System.out.println("1. Update Name of Menu Item");
-		System.out.println("2. Update Price of Menu Item");
-	}
-
-	public static void optionMenuItemList() {
-		C206_CaseStudy.setHeader("MENU ITEM OPTION");
-		System.out.println("1. Update Menu Item - Name and Price");
-		System.out.println("2. View Menu Item by Price Range");
-		System.out.println("3. Search Menu Item by Category");
 	}
 
 	public static void setHeader(String header) {
