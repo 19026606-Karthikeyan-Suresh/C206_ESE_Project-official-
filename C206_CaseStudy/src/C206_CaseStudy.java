@@ -108,15 +108,15 @@ public class C206_CaseStudy {
 
 				if (itemType == 1) {
 					// View All Accounts
-//					C206_CaseStudy.viewAllAccounts(accountList);
-
+					C206_CaseStudy.viewAllAccounts(accountList);
+					
 				} else if (itemType == 2) {
 					// Add Account
-//					C206_CaseStudy.addAccount(accountList);
+					C206_CaseStudy.addAccount(accountList);
 
 				} else if (itemType == 3) {
 					// Delete Account
-//					C206_CaseStudy.deleteAccount(accountList);
+					C206_CaseStudy.deleteAccount(accountList);
 
 				} else {
 					System.out.println("Invalid type");
