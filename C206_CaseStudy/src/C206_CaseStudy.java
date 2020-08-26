@@ -109,11 +109,7 @@ public class C206_CaseStudy {
 				if (itemType == 1) {
 					// View All Accounts
 					C206_CaseStudy.viewAllAccounts(accountList);
-<<<<<<< HEAD
 
-=======
-					
->>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
 				} else if (itemType == 2) {
 					// Add Account
 					C206_CaseStudy.addAccount(accountList);
