@@ -515,10 +515,10 @@ public class C206_CaseStudy {
 	public static void viewAllAccounts (ArrayList<Account>accountList) {
 		C206_CaseStudy.setHeader("VIEW ALL ACCOUNTS");
 		
-		String output = String.format ("%-15s %-15s %-10.2f\n", "USERNAME", "PASSWORD", "USER ROLE" );
+		String output = String.format ("%-15s %-15s %-15s\n", "USERNAME", "PASSWORD", "USER ROLE" );
 		
 		for (int i = 0; i <accountList.size();i++)
-			output += String.format("%-15s %-15s %-10.2f\n", accountList.get(i).getUsername(), accountList.get(i).getPassword(), 
+			output += String.format("%-15s %-15s %-15s\n", accountList.get(i).getUsername(), accountList.get(i).getPassword(), 
 					accountList.get(i).getUsername());
 
 		System.out.println(output);
