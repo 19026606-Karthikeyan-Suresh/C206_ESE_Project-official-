@@ -14,7 +14,7 @@ public class C206_CaseStudy {
 		purchaseOrderList.add(new PurchaseOrder("straws", 100, 10.50, "20/1/2020"));
 		purchaseOrderList.add(new PurchaseOrder("Milo powder", 3, 14.50, "24/1/2020"));
 
-		// Bernadette
+		// Bernadette Menu Objects
 		ArrayList<MenuItem> menuItemList = new ArrayList<MenuItem>();
 		menuItemList.add(new MenuItem("Smoothies", "Strawberry", 3.50));
 		menuItemList.add(new MenuItem("Smoothies", "Kiwi", 2.50));
@@ -24,14 +24,28 @@ public class C206_CaseStudy {
 		menuItemList.add(new MenuItem("Sweets", "Candies", 1.50));
 		menuItemList.add(new MenuItem("Beverages", "Lemon Tea", 1.50));
 		menuItemList.add(new MenuItem("Beverages", "Milo", 3.50));
+<<<<<<< HEAD
+
+		
+		// Kenneth Order Objects
+=======
 
 		// Kenneth
+>>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
 		ArrayList<Order> orderList = new ArrayList<Order>();
 		ArrayList<MenuItem> orderMenu = new ArrayList<>();
 		ArrayList<MenuItem> menuItemList2 = new ArrayList<MenuItem>();
 		menuItemList2.add(new MenuItem("Soda", "Sprite", 1.50));
 		menuItemList2.add(new MenuItem("Sweets", "Lollipops", 2.00));
 		orderList.add(new Order("Jerry", "pending", true, orderMenu, "now"));
+		
+		// Ariezal Account Objects
+		ArrayList<Account> accountList = new ArrayList<Account>();
+		accountList.add(new Account("James", "canteen123", "Staff"));
+		accountList.add(new Account("Zac", "canteen123", "Canteen Admin"));
+		accountList.add(new Account("Joe", "canteen123", "Customer"));
+		accountList.add(new Account("Aaron", "canteen123", "Staff"));
+		
 
 		int option = 0;
 
@@ -251,8 +265,13 @@ public class C206_CaseStudy {
 		}
 		return output;
 	}
+<<<<<<< HEAD
+//METHODS FOR MENU------------------------------------------------------------------
+	// method to view MenuItem objects in ArrayList
+=======
 
 	// method to view MenuItem objects in ArrayList - Bernadette
+>>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
 	public static void viewAllMenuItem(ArrayList<MenuItem> menuItemList) {
 		C206_CaseStudy.setHeader("MENU ITEM LIST");
 		String output = String.format("%-15s %-15s %-10s\n", "CATEGORY", "NAME", "PRICE");
@@ -458,7 +477,63 @@ public class C206_CaseStudy {
 		}
 	}
 
+<<<<<<< HEAD
+
+
+	}
+//METHODS FOR MENU -------------------------------------------------------------------------------------------------------	
+
+//METHODS FOR ACCOUNT
+	// Add Account 
+	public static void addAccount(ArrayList<Account>accountList) {
+		C206_CaseStudy.setHeader("ADD NEW ACCOUNT");
+		
+		String username = Helper.readString("Enter Username > ");
+		String password = Helper.readString("Enter a new password > ");
+		String userRole = Helper.readString("Enter the role > ");
+		
+		// Check for duplicate account
+		boolean isDuplicate = false;
+		
+		for (int i = 0; i < accountList.size(); i++) {
+			if (username.equalsIgnoreCase(accountList.get(i).getUsername()) && 
+					userRole.equalsIgnoreCase(accountList.get(i).getUserRole())) {
+					System.out.println("That account already exist! Try Again!");
+					isDuplicate = true;
+					break;
+				
+			}
+		}
+		// If account is not duplicated, it will create the account requested by the user.
+		if (isDuplicate == false) {
+			accountList.add(new Account(username, password, userRole));
+			System.out.println("New Account added!"); 
+		}
+	}	
+	//View Account	
+	public static void viewAllAccounts (ArrayList<Account>accountList) {
+		C206_CaseStudy.setHeader("VIEW ALL ACCOUNTS");
+		String output = String.format("%-30 %-30 %-30 \n", "USERNAME", "PASSWORD" , "USER ROLE");
+		
+		for (int i = 0; i <accountList.size();i++) {
+			
+			output += String.format("%-30 %-30 %-30 \n",accountList.get(i).getUsername(), accountList.get(i).getPassword(), accountList.get(i).getUserRole());
+		}
+			System.out.println(output);
+	}
+	
+	
+// Delete account	
+	public static void deleteAccount (ArrayList<Account>accountList) {
+		C206_CaseStudy.setHeader("DELETE AN ACCOUNT");
+	}
+//METHODS FOR ACCOUNT
+
+		
+// Kenneth
+=======
 	// Kenneth
+>>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
 	public static String viewAllOrder(ArrayList<Order> orderList, String user) {
 		String s = "";
 		int u = 0;
