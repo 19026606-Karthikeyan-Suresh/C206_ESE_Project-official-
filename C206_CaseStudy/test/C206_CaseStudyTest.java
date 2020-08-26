@@ -353,12 +353,29 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test // Karthik
+	public void retrievePurchaseOrderTest() {
+		// Test if PurchaseOrder list is not null but empty - boundary
+		assertNotNull("Test if there is valid PurchaseOrder arraylist to retrieve PurchaseOrderItems", purchaseOrderList);
+		// test if the list of Purchase Order retrieved from the C206_CaseStudy is empty - boundary
+		String allPurchaseOrderItems = C206_CaseStudy.RetrievePurchaseOrder(purchaseOrderList);
+		String testOutput = "";
+		assertEquals("Check that RetrievePurchaseOrder", testOutput, allPurchaseOrderItems);
+		//Given an empty List after adding 2 items, test if the size of the list is 2 - normal
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO1);
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO2);
+		assertEquals("Test that Purchase Order Item ArrayList size is 2", 2,purchaseOrderList.size());
+		// test if the expected output string same as the list of Purchase Order items retrieved from the C206_CaseStudy
+		allPurchaseOrderItems = C206_CaseStudy.RetrievePurchaseOrder(purchaseOrderList);
+		testOutput = String.format("%-15s %-10d %-10.2f %-15s\n", "strawberry", 10, 13.50, "21/3/2020");
+		testOutput += String.format("%-15s %-10d %-10.2f %-15s\n", "straws", 30, 5.0, "25/2/2020");
+		assertEquals("Test that ViewPurchaseOrderItems", testOutput, allPurchaseOrderItems);
 
 
 
 	@After
 	public void tearDown() throws Exception {
 
+		
 	}
 
 }

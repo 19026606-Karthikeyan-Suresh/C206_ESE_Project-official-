@@ -243,7 +243,7 @@ public class C206_CaseStudy {
 		System.out.println("2. Delete Purchase Order Item");
 		System.out.println("3. View Purchase Order items");
 		System.out.println("4. Change delivery date");
-		System.out.println("2. Search item");
+		System.out.println("5. Search item");
 	}
 
 	public static void setHeader(String header) {
