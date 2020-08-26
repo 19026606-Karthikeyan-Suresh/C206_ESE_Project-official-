@@ -24,14 +24,14 @@ public class C206_CaseStudy {
 		menuItemList.add(new MenuItem("Sweets", "Candies", 1.50));
 		menuItemList.add(new MenuItem("Beverages", "Lemon Tea", 1.50));
 		menuItemList.add(new MenuItem("Beverages", "Milo", 3.50));
-<<<<<<< HEAD
+
 
 		
 		// Kenneth Order Objects
-=======
+
 
 		// Kenneth
->>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
+
 		ArrayList<Order> orderList = new ArrayList<Order>();
 		ArrayList<MenuItem> orderMenu = new ArrayList<>();
 		ArrayList<MenuItem> menuItemList2 = new ArrayList<MenuItem>();
@@ -109,7 +109,11 @@ public class C206_CaseStudy {
 				if (itemType == 1) {
 					// View All Accounts
 					C206_CaseStudy.viewAllAccounts(accountList);
+<<<<<<< HEAD
 
+=======
+					
+>>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
 				} else if (itemType == 2) {
 					// Add Account
 					C206_CaseStudy.addAccount(accountList);
@@ -265,13 +269,13 @@ public class C206_CaseStudy {
 		}
 		return output;
 	}
-<<<<<<< HEAD
+
 //METHODS FOR MENU------------------------------------------------------------------
 	// method to view MenuItem objects in ArrayList
-=======
+
 
 	// method to view MenuItem objects in ArrayList - Bernadette
->>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
+
 	public static void viewAllMenuItem(ArrayList<MenuItem> menuItemList) {
 		C206_CaseStudy.setHeader("MENU ITEM LIST");
 		String output = String.format("%-15s %-15s %-10s\n", "CATEGORY", "NAME", "PRICE");
@@ -477,10 +481,10 @@ public class C206_CaseStudy {
 		}
 	}
 
-<<<<<<< HEAD
 
 
-	}
+
+	
 //METHODS FOR MENU -------------------------------------------------------------------------------------------------------	
 
 //METHODS FOR ACCOUNT
@@ -531,9 +535,7 @@ public class C206_CaseStudy {
 
 		
 // Kenneth
-=======
-	// Kenneth
->>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
+
 	public static String viewAllOrder(ArrayList<Order> orderList, String user) {
 		String s = "";
 		int u = 0;
