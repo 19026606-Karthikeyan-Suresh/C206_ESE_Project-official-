@@ -532,8 +532,19 @@ public class C206_CaseStudy {
 
 	// Delete account	
 	public static void deleteAccount (ArrayList<Account>accountList) {
-		
+		C206_CaseStudy.viewAllAccounts(accountList);
 		C206_CaseStudy.setHeader("DELETE AN ACCOUNT");
+		
+		String username = Helper.readString("Enter username > ");
+		String password = Helper.readString("Enter password > ");
+		String userRole = Helper.readString("Enter user role> ");
+		
+		Boolean isDeleted = doDeleteAccount(accountList, username, password, userRole);
+		if(isDeleted == false) {
+			System.out.println("Account inputed does not exist.");
+		} else {
+			System.out.println("Account deleted! ");	
+		}
 	}
 //METHODS FOR ACCOUNT
 
