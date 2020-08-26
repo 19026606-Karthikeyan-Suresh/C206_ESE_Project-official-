@@ -352,7 +352,7 @@ public class C206_CaseStudyTest {
 
 	}
 	
-	@Test // Karthik
+	@Test // Karthik 
 	public void retrievePurchaseOrderTest() {
 		// Test if PurchaseOrder list is not null but empty - boundary
 		assertNotNull("Test if there is valid PurchaseOrder arraylist to retrieve PurchaseOrderItems", purchaseOrderList);
@@ -369,7 +369,7 @@ public class C206_CaseStudyTest {
 		testOutput = String.format("%-15s %-10d %-10.2f %-15s\n", "strawberry", 10, 13.50, "21/3/2020");
 		testOutput += String.format("%-15s %-10d %-10.2f %-15s\n", "straws", 30, 5.0, "25/2/2020");
 		assertEquals("Test that ViewPurchaseOrderItems", testOutput, allPurchaseOrderItems);
-
+	}
 
 
 	@After
