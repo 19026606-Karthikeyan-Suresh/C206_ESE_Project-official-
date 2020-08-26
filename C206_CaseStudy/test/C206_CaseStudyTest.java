@@ -119,7 +119,7 @@ public class C206_CaseStudyTest {
 		assertTrue("Test if the existing menu item can delete from the list", ok);
 		// error condition
 		ok = C206_CaseStudy.doDeleteMenuItem(menuItemList, "Seafood", "Shrimps", 3.00);
-		assertFalse("Test if the existing menu item can delete from the list?", ok);
+		assertFalse("Test if the non-existing menu item can delete from the list?", ok);
 	}
 
 	@Test // Bernadette
@@ -142,15 +142,15 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addMenuItem(menuItemList, menu2);
 		// normal condition
 		Boolean ok = C206_CaseStudy.doUpdateMenuItemPrice(menuItemList, "Smoothies", "Banana", 3.50);
-		assertTrue("Test if the existing menu item name is updated its price?", ok);
+		assertTrue("Test if Banana smoothie (existing item) is updated its price?", ok);
 		// error condition
 		ok = C206_CaseStudy.doUpdateMenuItemPrice(menuItemList, "Smoothies", "Blueberry", 3.50);
-		assertFalse("Test if the existing menu item is updated its price?", ok);
+		assertFalse("Test if Blueberry smoothie (non-existing item) is updated its price?", ok);
 	}
 
 	@Test // Bernadette
 	public void doViewMenuItemByPriceRangeTest() {
-		// Given an empty list, after adding 4 items, test if the arraylist size is 6 -
+		// Given an empty list, after adding 6 items, test if the arraylist size is 6 -
 		// normal condition
 		C206_CaseStudy.addMenuItem(menuItemList, menu1);
 		C206_CaseStudy.addMenuItem(menuItemList, menu2);
@@ -161,7 +161,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that Menu Item arraylist size is 6", 6, menuItemList.size());
 
 		// normal condition
-		Boolean ok = C206_CaseStudy.doViewByPriceRange(menuItemList, 2.00, 4.00);
+		Boolean ok = C206_CaseStudy.doViewByPriceRange(menuItemList, 2.00, 3.00);
 		assertTrue("Test if these menu items fall under the range between $2 to $3", ok);
 
 		// error condition
@@ -171,7 +171,7 @@ public class C206_CaseStudyTest {
 
 	@Test // Bernadette
 	public void canSearchByCategory() {
-		// Given an empty list, after adding 4 items, test if the arraylist size is 6 -
+		// Given an empty list, after adding 6 items, test if the arraylist size is 6 -
 		// normal condition
 		C206_CaseStudy.addMenuItem(menuItemList, menu1);
 		C206_CaseStudy.addMenuItem(menuItemList, menu2);

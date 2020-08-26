@@ -110,7 +110,7 @@ public class C206_CaseStudy {
 				if (itemType == 1) {
 					// View All Accounts
 					C206_CaseStudy.viewAllAccounts(accountList);
-					
+
 				} else if (itemType == 2) {
 					// Add Account
 					C206_CaseStudy.addAccount(accountList);
