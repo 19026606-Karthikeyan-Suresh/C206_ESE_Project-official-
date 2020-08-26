@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 public class C206_CaseStudy {
 
 	private static final int itemType = 0;
@@ -513,15 +514,15 @@ public class C206_CaseStudy {
 	//View Account	
 	public static void viewAllAccounts (ArrayList<Account>accountList) {
 		C206_CaseStudy.setHeader("VIEW ALL ACCOUNTS");
-		String output = String.format("%-30 %-30 %-30 \n", "USERNAME", "PASSWORD" , "USER ROLE");
 		
-		for (int i = 0; i <accountList.size();i++) {
-			
-			output += String.format("%-30 %-30 %-30 \n",accountList.get(i).getUsername(), accountList.get(i).getPassword(), accountList.get(i).getUserRole());
-		}
-			System.out.println(output);
+		String output = String.format ("%-15s %-15s %-10.2f\n", "USERNAME", "PASSWORD", "USER ROLE" );
+		
+		for (int i = 0; i <accountList.size();i++)
+			output += String.format("%-15s %-15s %-10.2f\n", accountList.get(i).getUsername(), accountList.get(i).getPassword(), 
+					accountList.get(i).getUsername());
+
+		System.out.println(output);
 	}
-	
 	
 // Delete account	
 	public static void deleteAccount (ArrayList<Account>accountList) {
