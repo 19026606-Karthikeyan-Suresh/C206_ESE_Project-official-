@@ -6,15 +6,13 @@ public class C206_CaseStudy {
 
 	public static void main(String[] args) {
 
-		//Karthik
+		// Karthik
 		ArrayList<PurchaseOrder> purchaseOrderList = new ArrayList<PurchaseOrder>();
 		purchaseOrderList.add(new PurchaseOrder("Strawberry", 10, 10.50, "21/1/2020"));
 		purchaseOrderList.add(new PurchaseOrder("Kiwi", 11, 7.50, "21/2/2020"));
 		purchaseOrderList.add(new PurchaseOrder("cups", 9, 9.50, "21/1/2020"));
 		purchaseOrderList.add(new PurchaseOrder("straws", 100, 10.50, "20/1/2020"));
 		purchaseOrderList.add(new PurchaseOrder("Milo powder", 3, 14.50, "24/1/2020"));
-		
-
 
 		// Bernadette
 		ArrayList<MenuItem> menuItemList = new ArrayList<MenuItem>();
@@ -35,7 +33,6 @@ public class C206_CaseStudy {
 		menuItemList2.add(new MenuItem("Sweets", "Lollipops", 2.00));
 		orderList.add(new Order("Jerry", "pending", true, orderMenu, "now"));
 
-
 		int option = 0;
 
 		while (option != 5) {
@@ -47,9 +44,8 @@ public class C206_CaseStudy {
 				userTypeMenu();
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
-				if (itemType == 1) {
-					// Bernadette
-
+				if (itemType == 1) { // Bernadette
+					
 					C206_CaseStudy.viewAllMenuItem(menuItemList);
 					optionMenuItemList();
 					int optionMenuItem = Helper.readInt("Enter option for menu item > ");
@@ -84,14 +80,13 @@ public class C206_CaseStudy {
 				} else if (itemType == 3) {
 					// delete menu item
 					C206_CaseStudy.deleteMenuItem(menuItemList);
-					
 
 				} else {
 					System.out.println("Invalid type");
 				}
 // ADD, VIEW AND DELETE ACCOUNT OPTIONS FOR USER TO CHOOSE.
-			} else if (option == 2) {
-				// Ariezal
+			} else if (option == 2) { // Ariezal
+				
 				C206_CaseStudy.setHeader("View, Add, Delete Account");
 				userTypeMenu();
 
@@ -113,26 +108,8 @@ public class C206_CaseStudy {
 					System.out.println("Invalid type");
 				}
 
-			} else if (option == 3) {
+			} else if (option == 3) { // Kenneth
 
-				userTypeMenu();
-				
-			} else if (option == 4) { //Karthik
-				POlistMenu();
-				int ItemType = Helper.readInt("Enter an option > ");
-				if (ItemType == 1) {
-					UpdateDeliveryDate(purchaseOrderList);
-				}
-					else if (ItemType == 2) {
-						searchPurchaseOrderItemsByItemName(purchaseOrderList);
-					
-					
-				}
-				
-				
-
-
-				// Kenneth
 				int itemType = 0;
 				String user = Helper.readString("Enter Account Name: ");
 				while (itemType != 6) {
@@ -189,9 +166,15 @@ public class C206_CaseStudy {
 				}
 				System.out.println(C206_CaseStudy.summaryOrder(orderList, user));
 
-			} else if (option == 4) {
-				// Karthik
+			} else if (option == 4) { // Karthik
+				POlistMenu();
+				int ItemType = Helper.readInt("Enter an option > ");
+				if (ItemType == 1) {
+					UpdateDeliveryDate(purchaseOrderList);
+				} else if (ItemType == 2) {
+					searchPurchaseOrderItemsByItemName(purchaseOrderList);
 
+				}
 
 			} else if (option == 5) {
 
@@ -210,9 +193,8 @@ public class C206_CaseStudy {
 		System.out.println("2. Add");
 		System.out.println("3. Delete");
 
-
 	}
-	
+
 	public static void POlistMenu() {
 		C206_CaseStudy.setHeader("PURCHASE ORDER MENU");
 		System.out.println("1. Change delivery date");
@@ -308,7 +290,7 @@ public class C206_CaseStudy {
 		String category = Helper.readString("Enter category > ");
 		String newName = Helper.readString("Enter name > ");
 		double price = Helper.readDouble("Enter price > ");
-	
+
 		Boolean isDeleted = doDeleteMenuItem(menuItemList, category, newName, price);
 		if (isDeleted == false) {
 			System.out.println("Menu Item cannot be deleted");
@@ -615,9 +597,10 @@ public class C206_CaseStudy {
 	// Karthik
 	public static String RetrievePurchaseOrder(ArrayList<PurchaseOrder> purchaseOrderList) {
 		String output = "";
-		for (int i = 0; i < purchaseOrderList.size(); i++) { 
+		for (int i = 0; i < purchaseOrderList.size(); i++) {
 			output += String.format("%-15s %-10d %-10.2f %-10s\n", purchaseOrderList.get(i).getItemName(),
-					purchaseOrderList.get(i).getItemQuantity(),purchaseOrderList.get(i).getItemUnitPrice(), purchaseOrderList.get(i).getDeliveryDate());
+					purchaseOrderList.get(i).getItemQuantity(), purchaseOrderList.get(i).getItemUnitPrice(),
+					purchaseOrderList.get(i).getDeliveryDate());
 		}
 		return output;
 	}
@@ -625,29 +608,29 @@ public class C206_CaseStudy {
 	public static void ViewPurchaseOrder(ArrayList<PurchaseOrder> purchaseOrderList) {
 		C206_CaseStudy.setHeader("PURCHASE ORDER LIST");
 		String output = String.format("%-15s %-10s %-10s %-15s\n", "Name", "Quantity", "Price", "Delivery Date");
-		output  +=  RetrievePurchaseOrder(purchaseOrderList);
-		
+		output += RetrievePurchaseOrder(purchaseOrderList);
+
 		System.out.println(output);
 	}
-	
-	public static boolean CheckUpdateDeliveryDate(ArrayList<PurchaseOrder> purchaseOrderList, String itemName, 
-			int itemQuantity , double itemUnitPrice, String deliveryDate) { 
+
+	public static boolean CheckUpdateDeliveryDate(ArrayList<PurchaseOrder> purchaseOrderList, String itemName,
+			int itemQuantity, double itemUnitPrice, String deliveryDate) {
 		boolean isDeliveryDateUpdated = false;
-		
-		for (int i = 0; i < purchaseOrderList.size(); i ++) {
+
+		for (int i = 0; i < purchaseOrderList.size(); i++) {
 			String getItemName = purchaseOrderList.get(i).getItemName();
 			int getitemQuantity = purchaseOrderList.get(i).getItemQuantity();
 			double getitemUnitPrice = purchaseOrderList.get(i).getItemUnitPrice();
-			if (itemName.equalsIgnoreCase(getItemName) && itemQuantity == getitemQuantity && itemUnitPrice == getitemUnitPrice) {
+			if (itemName.equalsIgnoreCase(getItemName) && itemQuantity == getitemQuantity
+					&& itemUnitPrice == getitemUnitPrice) {
 				purchaseOrderList.get(i).setDeliveryDate(deliveryDate);
 				isDeliveryDateUpdated = true;
-				
+
 			}
 		}
 		return isDeliveryDateUpdated;
 	}
 
-	
 	public static void UpdateDeliveryDate(ArrayList<PurchaseOrder> purchaseOrderList) {
 		C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
 		C206_CaseStudy.setHeader("UPDATE DELIVERY DATE");
@@ -655,64 +638,59 @@ public class C206_CaseStudy {
 		int itemQuantity = Helper.readInt("Enter item quantity > ");
 		double itemUnitPrice = Helper.readDouble("Enter item price > ");
 		String newDeliveryDate = Helper.readString("Enter new delivery date >");
-		Boolean isDeliveryDateUpdated = CheckUpdateDeliveryDate(purchaseOrderList, itemName, 
-				itemQuantity , itemUnitPrice, newDeliveryDate);
+		Boolean isDeliveryDateUpdated = CheckUpdateDeliveryDate(purchaseOrderList, itemName, itemQuantity,
+				itemUnitPrice, newDeliveryDate);
 		if (isDeliveryDateUpdated == false) {
 			System.out.println("delivery date cannot be updated");
 		} else {
 			System.out.println("delivery date has been updated! ");
 		}
-		
+
 	}
-	
+
 	public static boolean SearchByItemName(ArrayList<PurchaseOrder> purchaseOrderList, String SearchItemName) {
-				boolean SearchByItemName = false;
-				
-				String output = String.format("%-15s %-10s %-10s %-15s\n", "Item Name", "Quantity", "Price", "Delivery Date");
-				String deliveryDate = "";
-				int Quantity = 0;
-				double Price = 0.00;
-				
-				for (int i = 0; i < purchaseOrderList.size(); i ++) {
-					
-					String itemName = purchaseOrderList.get(i).getItemName();
-					Quantity = purchaseOrderList.get(i).getItemQuantity();
-					Price = purchaseOrderList.get(i).getItemUnitPrice();
-					deliveryDate = purchaseOrderList.get(i).getDeliveryDate();
-					
-					if (itemName.equalsIgnoreCase(SearchItemName)) {
-						output += String.format("%-15s %-10d %-10.2f %-15s", itemName, Quantity, Price, deliveryDate);
-						SearchByItemName = true;
-						
-					}
-					
-				}
-				System.out.println(output);
-				return SearchByItemName;
+		boolean SearchByItemName = false;
+
+		String output = String.format("%-15s %-10s %-10s %-15s\n", "Item Name", "Quantity", "Price", "Delivery Date");
+		String deliveryDate = "";
+		int Quantity = 0;
+		double Price = 0.00;
+
+		for (int i = 0; i < purchaseOrderList.size(); i++) {
+
+			String itemName = purchaseOrderList.get(i).getItemName();
+			Quantity = purchaseOrderList.get(i).getItemQuantity();
+			Price = purchaseOrderList.get(i).getItemUnitPrice();
+			deliveryDate = purchaseOrderList.get(i).getDeliveryDate();
+
+			if (itemName.equalsIgnoreCase(SearchItemName)) {
+				output += String.format("%-15s %-10d %-10.2f %-15s", itemName, Quantity, Price, deliveryDate);
+				SearchByItemName = true;
+
 			}
+
+		}
+		System.out.println(output);
+		return SearchByItemName;
+	}
 
 	public static void searchPurchaseOrderItemsByItemName(ArrayList<PurchaseOrder> purchaseOrderList) {
 		C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
 		C206_CaseStudy.setHeader("SEARCH PURCHASE ORDER ITEMS BY ITEM NAME");
-		
+
 		if (!purchaseOrderList.isEmpty()) {
-			
+
 			String SearchItemName = Helper.readString("Enter item name > ");
 			Boolean SearchByItemName = SearchByItemName(purchaseOrderList, SearchItemName);
 			if (SearchByItemName == false) {
 				System.out.println("Item does not exist");
-				
+
 			}
-		}else {
+		} else {
 			System.out.println("Item exists");
 		}
 	}
 
-
 }
 
-
-
-
 // Ariezal Methods
-
