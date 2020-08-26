@@ -519,7 +519,7 @@ public class C206_CaseStudy {
 		
 		for (int i = 0; i <accountList.size();i++)
 			output += String.format("%-15s %-15s %-15s\n", accountList.get(i).getUsername(), accountList.get(i).getPassword(), 
-					accountList.get(i).getUsername());
+					accountList.get(i).getUserRole());
 
 		System.out.println(output);
 	}
