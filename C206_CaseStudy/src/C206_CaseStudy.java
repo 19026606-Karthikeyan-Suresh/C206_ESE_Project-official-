@@ -44,8 +44,8 @@ public class C206_CaseStudy {
 				userTypeMenu();
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
-				if (itemType == 1) { // Bernadette
-					
+				if (itemType == 1) { // Bernadette	
+
 					C206_CaseStudy.viewAllMenuItem(menuItemList);
 					optionMenuItemList();
 					int optionMenuItem = Helper.readInt("Enter option for menu item > ");
