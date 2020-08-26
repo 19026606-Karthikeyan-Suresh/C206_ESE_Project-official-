@@ -77,6 +77,8 @@ public class C206_CaseStudyTest {
 
 	@Test // Bernadette
 	public void addMenuItemTest() {
+		// boundary
+		assertNotNull("Check if there is valid Menu Item arraylist to add to", menuItemList);
 		// normal
 		C206_CaseStudy.addMenuItem(menuItemList, menu1);
 		assertEquals("Check that Menu Item arraylist size is 1", 1, menuItemList.size());
@@ -88,16 +90,20 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test // Bernadette
-	public void viewAllMenuItemsTest() {
+	public void retrieveAllMenuItemsTest() {
 		// Test if Menu Item list is not null but empty - boundary
 		assertNotNull("Test if there is valid Menu Item arraylist to retrieve menu item", menuItemList);
+		// test if the list of menu items retrieved from the C206_CaseStudy is empty - boundary
+		String allMenuItems = C206_CaseStudy.retrieveAllMenuItems(menuItemList);
+		String testOutput = "";
+		assertEquals("Check that ViewAllMenuItems", testOutput, allMenuItems);
 		// Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
 		C206_CaseStudy.addMenuItem(menuItemList, menu1);
 		C206_CaseStudy.addMenuItem(menuItemList, menu2);
 		assertEquals("Test that Menu Item arraylist size is 2", 2, menuItemList.size());
 		// test if the expected output string same as the list of menu items retrieved from the C206_CaseStudy
-		String allMenuItems = C206_CaseStudy.retrieveAllMenuItems(menuItemList);
-		String testOutput = String.format("%-15s %-15s %-10.2f\n", "Soda", "Sprite", 1.50);
+		allMenuItems = C206_CaseStudy.retrieveAllMenuItems(menuItemList);
+		testOutput = String.format("%-15s %-15s %-10.2f\n", "Soda", "Sprite", 1.50);
 		testOutput += String.format("%-15s %-15s %-10.2f\n", "Smoothies", "Banana", 3.50);
 		assertEquals("Test that ViewAllMenuItems", testOutput, allMenuItems);
 
@@ -113,7 +119,7 @@ public class C206_CaseStudyTest {
 		assertTrue("Test if the existing menu item can delete from the list", ok);
 		// error condition
 		ok = C206_CaseStudy.doDeleteMenuItem(menuItemList, "Seafood", "Shrimps", 3.00);
-		assertFalse("Test if the non-existing menu item can delete from the list?", ok);
+		assertFalse("Test if the existing menu item can delete from the list?", ok);
 	}
 
 	@Test // Bernadette
@@ -123,10 +129,10 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addMenuItem(menuItemList, menu1);
 		// normal condition
 		Boolean ok = C206_CaseStudy.doUpdateMenuItemName(menuItemList, "Soda", "Coca Cola", 1.50);
-		assertTrue("Test if menu item can update to its name (category and price remain unchanged) ?", ok);
+		assertTrue("Test if the existing menu item is updated its name?", ok);
 		// error condition
 		ok = C206_CaseStudy.doUpdateMenuItemName(menuItemList, "Soda", "Coca Cola", 2.00);
-		assertFalse("Test if menu item can update to its name (only category remain unchanged)", ok);
+		assertFalse("Test if the existing menu item is updated its name?", ok);
 	}
 
 	@Test // Bernadette
@@ -135,16 +141,16 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid MenuItem arraylist to add to", menuItemList);
 		C206_CaseStudy.addMenuItem(menuItemList, menu2);
 		// normal condition
-		Boolean ok = C206_CaseStudy.doUpdateMenuItemPrice(menuItemList, "Smoothies", "Banana", 2.50);
-		assertTrue("Test if menu item can update to its price (category and name remain unchanged) ?", ok);
+		Boolean ok = C206_CaseStudy.doUpdateMenuItemPrice(menuItemList, "Smoothies", "Banana", 3.50);
+		assertTrue("Test if the existing menu item name is updated its price?", ok);
 		// error condition
-		ok = C206_CaseStudy.doUpdateMenuItemPrice(menuItemList, "Smoothies", "Blueberry", 2.50);
-		assertFalse("Test if menu item can update to its price (only category remain unchanged) ?", ok);
+		ok = C206_CaseStudy.doUpdateMenuItemPrice(menuItemList, "Smoothies", "Blueberry", 3.50);
+		assertFalse("Test if the existing menu item is updated its price?", ok);
 	}
 
 	@Test // Bernadette
 	public void doViewMenuItemByPriceRangeTest() {
-		// Given an empty list, after adding 6 items, test if the arraylist size is 6 -
+		// Given an empty list, after adding 4 items, test if the arraylist size is 6 -
 		// normal condition
 		C206_CaseStudy.addMenuItem(menuItemList, menu1);
 		C206_CaseStudy.addMenuItem(menuItemList, menu2);
@@ -155,7 +161,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that Menu Item arraylist size is 6", 6, menuItemList.size());
 
 		// normal condition
-		Boolean ok = C206_CaseStudy.doViewByPriceRange(menuItemList, 2.00, 3.00);
+		Boolean ok = C206_CaseStudy.doViewByPriceRange(menuItemList, 2.00, 4.00);
 		assertTrue("Test if these menu items fall under the range between $2 to $3", ok);
 
 		// error condition
@@ -165,7 +171,7 @@ public class C206_CaseStudyTest {
 
 	@Test // Bernadette
 	public void canSearchByCategory() {
-		// Given an empty list, after adding 6 items, test if the arraylist size is 6 -
+		// Given an empty list, after adding 4 items, test if the arraylist size is 6 -
 		// normal condition
 		C206_CaseStudy.addMenuItem(menuItemList, menu1);
 		C206_CaseStudy.addMenuItem(menuItemList, menu2);
@@ -352,7 +358,18 @@ public class C206_CaseStudyTest {
 
 	}
 	
-	@Test // Karthik 
+	@Test // Karthik
+	public void addPurchaseOrderItemTest() {
+		// normal
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO1);
+		assertEquals("Check that Purchase Order Item arraylist size is 1", 1, purchaseOrderList.size());
+		assertSame("Check that Purchase Order Item is added", PO1, purchaseOrderList.get(0));
+		// normal
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO2);
+		assertEquals("Check that Purchase Order Item arraylist size is 2", 2, purchaseOrderList.size());
+		assertSame("Check that Purchase Order Item is added", PO2, purchaseOrderList.get(1));
+	}
+	@Test //Karthik
 	public void retrievePurchaseOrderTest() {
 		// Test if PurchaseOrder list is not null but empty - boundary
 		assertNotNull("Test if there is valid PurchaseOrder arraylist to retrieve PurchaseOrderItems", purchaseOrderList);
@@ -363,19 +380,59 @@ public class C206_CaseStudyTest {
 		//Given an empty List after adding 2 items, test if the size of the list is 2 - normal
 		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO1);
 		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO2);
-		assertEquals("Test that Purchase Order Item ArrayList size is 2", 2,purchaseOrderList.size());
+		assertEquals("Test that Purchase Order Item ArrayList size is 2", 2 , purchaseOrderList.size());
 		// test if the expected output string same as the list of Purchase Order items retrieved from the C206_CaseStudy
 		allPurchaseOrderItems = C206_CaseStudy.RetrievePurchaseOrder(purchaseOrderList);
-		testOutput = String.format("%-15s %-10d %-10.2f %-15s\n", "strawberry", 10, 13.50, "21/3/2020");
-		testOutput += String.format("%-15s %-10d %-10.2f %-15s\n", "straws", 30, 5.0, "25/2/2020");
+		testOutput = String.format("%-15s %-10d %-10.2f %-10s\n", "strawberry", 10, 13.50, "21/3/2020");
+		testOutput += String.format("%-15s %-10d %-10.2f %-10s\n", "straws", 30, 5.0, "25/2/2020");
 		assertEquals("Test that ViewPurchaseOrderItems", testOutput, allPurchaseOrderItems);
 	}
+	@Test //Karthik
+	public void CheckDeletePurchaseOrderItemTest() {
+		// boundary condition
+		assertNotNull("Test if there is valid PurchaseOrder arraylist to add to", purchaseOrderList);
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO1);
+		// normal condition
+		Boolean ok = C206_CaseStudy.CheckDeletePurchaseOrderItem(purchaseOrderList,"strawberry", 10, 13.50, "21/3/2020");
+		assertTrue("Test if the existing Purchase Order item can be deleted from the list", ok);
+		// error condition
+		ok = C206_CaseStudy.CheckDeletePurchaseOrderItem(purchaseOrderList,"durian", 10, 13.50, "21/3/2020");
+		assertFalse("Test if the existing purchase Order item can be deleted from the list?", ok);
+	}
+	@Test //Karthik
+	public void CheckUpdateDeliveryDate() {
+		// boundary condition
+		assertNotNull("Test if there is valid PurchaseOrder arraylist to add to", purchaseOrderList);
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO1);
+		// normal condition
+		Boolean correct = C206_CaseStudy.CheckUpdateDeliveryDate(purchaseOrderList,"strawberry", 10, 13.50, "21/3/2020" );
+		assertTrue("Test if the existing PurchaseOrder item's Delivery Date has been updated?", correct);
+		// error condition
+		correct = C206_CaseStudy.CheckUpdateDeliveryDate(purchaseOrderList, "straw", 10, 13.50, "21/3/2020");
+		assertFalse("Test if the existing PurchaseOrder item's Delivery Date has been updated?", correct);
+		
+	}
+	@Test // Karthik
+	public void searchPurchaseOrderByItemNameTest() {
+		// Given an empty list, after adding 3 items, test if the arraylist size is 3 -
+		// normal condition
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO1);
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO2);
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO3);
+		assertEquals("Test that  PurchaseOrder arraylist size is 3", 3, purchaseOrderList.size());
 
+		// normal condition
+		Boolean correct = C206_CaseStudy.SearchByItemName(purchaseOrderList, "Strawberry");
+		assertTrue("Test if PurchaseOrder items can search using item Name", correct);
+
+		// error condition
+		correct = C206_CaseStudy.SearchByItemName(purchaseOrderList, "banana");
+		assertFalse("Test if purchaseOrder cans search by item Name", correct);
+	}
 
 	@After
 	public void tearDown() throws Exception {
 
-		
 	}
 
 }
