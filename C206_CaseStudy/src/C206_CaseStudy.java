@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class C206_CaseStudy {
 
 	private static final int itemType = 0;
@@ -26,13 +25,7 @@ public class C206_CaseStudy {
 		menuItemList.add(new MenuItem("Beverages", "Lemon Tea", 1.50));
 		menuItemList.add(new MenuItem("Beverages", "Milo", 3.50));
 
-
-		
 		// Kenneth Order Objects
-
-
-		// Kenneth
-
 		ArrayList<Order> orderList = new ArrayList<Order>();
 		ArrayList<MenuItem> orderMenu = new ArrayList<>();
 		ArrayList<MenuItem> menuItemList2 = new ArrayList<MenuItem>();
@@ -258,6 +251,9 @@ public class C206_CaseStudy {
 	}
 //-------Program Layouts------------------------------------------
 
+//METHODS FOR MENU------------------------------------------------------------------
+	
+	// method to view MenuItem objects in ArrayList - Bernadette
 	public static String retrieveAllMenuItems(ArrayList<MenuItem> menuItemList) {
 		String output = "";
 		for (int i = 0; i < menuItemList.size(); i++) {
@@ -267,12 +263,7 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-//METHODS FOR MENU------------------------------------------------------------------
-	// method to view MenuItem objects in ArrayList
-
-
 	// method to view MenuItem objects in ArrayList - Bernadette
-
 	public static void viewAllMenuItem(ArrayList<MenuItem> menuItemList) {
 		C206_CaseStudy.setHeader("MENU ITEM LIST");
 		String output = String.format("%-15s %-15s %-10s\n", "CATEGORY", "NAME", "PRICE");
@@ -477,9 +468,6 @@ public class C206_CaseStudy {
 			System.out.println("Category found");
 		}
 	}
-
-
-
 
 	
 //METHODS FOR MENU -------------------------------------------------------------------------------------------------------	
