@@ -170,8 +170,18 @@ public class C206_CaseStudy {
 				POlistMenu();
 				int ItemType = Helper.readInt("Enter an option > ");
 				if (ItemType == 1) {
-					UpdateDeliveryDate(purchaseOrderList);
+					C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
+					PurchaseOrder addPurchaseOrderItem = PurchaseOrderItem();
+					C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, addPurchaseOrderItem);
 				} else if (ItemType == 2) {
+					C206_CaseStudy.deletePurchaseOrderItem(purchaseOrderList);
+					
+				}else if (ItemType == 3) {
+					C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
+				}
+				if (ItemType == 4) {
+					UpdateDeliveryDate(purchaseOrderList);
+				} else if (ItemType == 5) {
 					searchPurchaseOrderItemsByItemName(purchaseOrderList);
 
 				}
@@ -197,7 +207,10 @@ public class C206_CaseStudy {
 
 	public static void POlistMenu() {
 		C206_CaseStudy.setHeader("PURCHASE ORDER MENU");
-		System.out.println("1. Change delivery date");
+		System.out.println("1. Add Purchase Order Item");
+		System.out.println("2. Delete Purchase Order Item");
+		System.out.println("3. View Purchase Order items");
+		System.out.println("4. Change delivery date");
 		System.out.println("2. Search item");
 	}
 
@@ -595,6 +608,64 @@ public class C206_CaseStudy {
 	}
 
 	// Karthik
+	
+	// method to create MenuItem object - Karthik
+	public static PurchaseOrder PurchaseOrderItem() {
+		String itemName = Helper.readString("Enter itemName > ");
+		int itemQuantity = Helper.readInt("Enter Item Quantity > ");
+		double itemUnitPrice  = Helper.readDouble("Enter Item Unit price > ");
+		String deliveryDate = Helper.readString("Enter delivery Date > ");
+		
+
+		PurchaseOrder PurchaseOrderItem = new PurchaseOrder(itemName, itemQuantity, itemUnitPrice, deliveryDate);
+		return PurchaseOrderItem;
+	}
+	
+	// method to add the purchaseOrderItem object in ArrayList - Karthik
+	public static void addPurchaseOrderItem(ArrayList<PurchaseOrder> purchaseOrderList, PurchaseOrder PurchaseOrderItem) {
+
+		purchaseOrderList.add(PurchaseOrderItem);
+		System.out.println("Purchase Order Item added");
+	}
+	
+	// method to check if the PurchaseOrderItem is deleted - Karthik
+		public static boolean CheckDeletePurchaseOrderItem(ArrayList<PurchaseOrder> purchaseOrderList, String itemName, int itemQuantity, double itemUnitPrice,
+					String deliveryDate) {
+			boolean isDeleted = false;
+
+			for (int i = 0; i < purchaseOrderList.size(); i++) {
+				String getItemName = purchaseOrderList.get(i).getItemName();
+				int getItemQuantity = purchaseOrderList.get(i).getItemQuantity();
+				double getItemUnitPrice = purchaseOrderList.get(i).getItemUnitPrice();
+				String getDeliveryDate = purchaseOrderList.get(i).getDeliveryDate();
+				
+
+				if (itemName.equalsIgnoreCase(getItemName) && itemQuantity == getItemQuantity && itemUnitPrice == getItemUnitPrice && deliveryDate.equalsIgnoreCase(getDeliveryDate) ) {
+					purchaseOrderList.remove(i);
+					isDeleted = true;
+				}
+			}
+			return isDeleted;
+		}
+
+		// method for delete purchase order item - Karthik
+		public static void deletePurchaseOrderItem(ArrayList<PurchaseOrder> purchaseOrderList) {
+			C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
+			C206_CaseStudy.setHeader("DELETE PURCHASE ORDER ITEM");
+			String itemName = Helper.readString("Enter itemName > ");
+			int itemQuantity = Helper.readInt("Enter item Quantity > ");
+			double itemUnitPrice = Helper.readDouble("Enter item price >");
+			String deliveryDate = Helper.readString("Enter delivery date > ");
+
+			Boolean isDeleted = CheckDeletePurchaseOrderItem(purchaseOrderList, itemName, itemQuantity, itemUnitPrice, deliveryDate );
+			if (isDeleted == false) {
+				System.out.println("Purchase Order Item cannot be deleted");
+			} else {
+				System.out.println("Purchase Order Item deleted");
+			}
+		}
+	
+	//Method to retrieve all items in the purchase order list
 	public static String RetrievePurchaseOrder(ArrayList<PurchaseOrder> purchaseOrderList) {
 		String output = "";
 		for (int i = 0; i < purchaseOrderList.size(); i++) {
@@ -604,7 +675,8 @@ public class C206_CaseStudy {
 		}
 		return output;
 	}
-
+	
+	//Method to View Purchase Order List
 	public static void ViewPurchaseOrder(ArrayList<PurchaseOrder> purchaseOrderList) {
 		C206_CaseStudy.setHeader("PURCHASE ORDER LIST");
 		String output = String.format("%-15s %-10s %-10s %-15s\n", "Name", "Quantity", "Price", "Delivery Date");
@@ -612,7 +684,8 @@ public class C206_CaseStudy {
 
 		System.out.println(output);
 	}
-
+	
+	//Method to find if Delivery Date has been updated
 	public static boolean CheckUpdateDeliveryDate(ArrayList<PurchaseOrder> purchaseOrderList, String itemName,
 			int itemQuantity, double itemUnitPrice, String deliveryDate) {
 		boolean isDeliveryDateUpdated = false;
@@ -630,7 +703,8 @@ public class C206_CaseStudy {
 		}
 		return isDeliveryDateUpdated;
 	}
-
+	
+	//Method to Update Delivery Date and Check if it works
 	public static void UpdateDeliveryDate(ArrayList<PurchaseOrder> purchaseOrderList) {
 		C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
 		C206_CaseStudy.setHeader("UPDATE DELIVERY DATE");
@@ -647,7 +721,8 @@ public class C206_CaseStudy {
 		}
 
 	}
-
+	
+	//Method to see if item is in the list
 	public static boolean SearchByItemName(ArrayList<PurchaseOrder> purchaseOrderList, String SearchItemName) {
 		boolean SearchByItemName = false;
 
@@ -673,7 +748,8 @@ public class C206_CaseStudy {
 		System.out.println(output);
 		return SearchByItemName;
 	}
-
+	
+	//Method to search Purchase Order Items by Item Name
 	public static void searchPurchaseOrderItemsByItemName(ArrayList<PurchaseOrder> purchaseOrderList) {
 		C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
 		C206_CaseStudy.setHeader("SEARCH PURCHASE ORDER ITEMS BY ITEM NAME");

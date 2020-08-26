@@ -30,7 +30,14 @@ public class C206_CaseStudyTest {
 
 	public C206_CaseStudyTest() {
 		super();
-	}
+	}	
+	//Karthik
+	private ArrayList<PurchaseOrder> purchaseOrderList;
+	
+	private PurchaseOrder PO1;
+	private PurchaseOrder PO2;
+	private PurchaseOrder PO3;
+	
 
 	@Before
 	public void setUp() throws Exception {
@@ -54,7 +61,12 @@ public class C206_CaseStudyTest {
 		m4 = new MenuItem("Desserts", "Cakes", 3.00);
 		orderMenuList.add(m3);
 		orderMenuList.add(m4);
-
+		
+		//Karthik
+		purchaseOrderList = new ArrayList<PurchaseOrder>();
+		PO1 = new PurchaseOrder("strawberry", 10, 13.50, "21/3/2020");
+		PO2 = new PurchaseOrder("straws", 30, 5.0, "25/2/2020");
+		PO3 = new PurchaseOrder("berry", 15, 11.50, "20/3/2020");
 	}
 
 	@Test
@@ -345,6 +357,10 @@ public class C206_CaseStudyTest {
 				testOutput2, output);
 
 	}
+	
+	@Test // Karthik
+
+
 
 	@After
 	public void tearDown() throws Exception {
