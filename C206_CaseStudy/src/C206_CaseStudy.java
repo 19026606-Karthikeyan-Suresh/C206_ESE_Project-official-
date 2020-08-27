@@ -631,41 +631,27 @@ public class C206_CaseStudy {
 		
 	}
 
-		// method to check if the account username is updated - Ariezal
-		public static boolean doUpdateAccountUsername(ArrayList<Account> accountList, String username, String password, String userRole) {
-			
-			boolean isUsernameUpdated = false;
-			
-			for (int i = 0; i < accountList.size();i++) {
-				String getPassword = accountList.get(i).getPassword();
-				String getUserRole = accountList.get(i).getUserRole();
-				
-				if(password.equalsIgnoreCase(getPassword) && userRole.equalsIgnoreCase(getUserRole) ) {
-					accountList.get(i).setUsername(username);
-					isUsernameUpdated = true;
-				}
-			}
-			return isUsernameUpdated;
-			
-		}
 		//method for account username update - Ariezal
 		public static void updateAccountUsername(ArrayList<Account>accountList) {
 			C206_CaseStudy.viewAllAccounts(accountList);
 			C206_CaseStudy.setHeader("UPDATE USERNAME");
 			String username = Helper.readString("Enter username > ");
+			
 			boolean isFound = false;
+	
 			
 			for(int i = 0 ; i < accountList.size(); i++) {
 				if (username.equalsIgnoreCase(accountList.get(i).getUsername())) {
 					
-					String currentUsername = Helper.readString("Enter current username > ");
+					String password = Helper.readString("Enter password > ");
 					
-					if(currentUsername.equals(accountList.get(i).getUsername())) {
+					if(username.equals(accountList.get(i).getUsername()) && password.equals(accountList.get(i).getPassword())) {
 						String newUsername = Helper.readString("Enter new username > ");
 						accountList.get(i).setUsername(newUsername);
+						System.out.println("The username has been successfully updated.");
 						
 					} else {
-						System.out.println("The username inputted is incorrect.");
+						System.out.println("The password inputted is incorrect.");
 					}
 					isFound = true;
 					break;
@@ -673,11 +659,20 @@ public class C206_CaseStudy {
 			}
 			if(isFound == false) {
 				System.out.println("This account does not exist.");
-			
-
-		
+			}	
 		}
-	}
+			// method for account password update - Ariezal
+//		public static void updateAccountPassword(ArrayList<Account> accountList) {
+			
+//			C206_CaseStudy.viewAllAccounts(accountList);
+//			C206_CaseStudy.setHeader("UPDATE ACCOUNT PASSWORD");
+			
+//			String user = Helper
+			
+//		}
+		
+//		}
+//	}
 	
 
 //METHODS FOR ACCOUNT ARIEZAL ^^^^^^^^
