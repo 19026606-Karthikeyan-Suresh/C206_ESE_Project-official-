@@ -243,7 +243,7 @@ public class C206_CaseStudy {
 		System.out.println("2. Delete Purchase Order Item");
 		System.out.println("3. View Purchase Order items");
 		System.out.println("4. Change delivery date");
-		System.out.println("5. Search item");
+		System.out.println("2. Search item");
 	}
 
 	public static void setHeader(String header) {
@@ -388,7 +388,7 @@ public class C206_CaseStudy {
 	}
 
 	// method to check if the menu items fall under the input range - Bernadette
-	public static boolean doViewByPriceRange(ArrayList<MenuItem> menuItemList, double minPrice, double maxPrice) {
+	public static boolean canViewByPriceRange(ArrayList<MenuItem> menuItemList, double minPrice, double maxPrice) {
 		boolean canViewByPriceRange = false;
 
 		String output = String.format("%-15s %-15s %-10s\n", "CATEGORY", "NAME", "PRICE");
@@ -420,7 +420,7 @@ public class C206_CaseStudy {
 			double minPrice = Helper.readDouble("Enter min. price > ");
 			double maxPrice = Helper.readDouble("Enter max. price > ");
 
-			Boolean canViewByPriceRange = doViewByPriceRange(menuItemList, minPrice, maxPrice);
+			Boolean canViewByPriceRange = canViewByPriceRange(menuItemList, minPrice, maxPrice);
 			if (canViewByPriceRange == false) {
 				System.out.println("No item falls under this range");
 			}

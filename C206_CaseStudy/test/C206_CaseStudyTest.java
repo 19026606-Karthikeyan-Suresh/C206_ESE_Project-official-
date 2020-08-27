@@ -90,7 +90,7 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test // Bernadette
-	public void retrieveAllMenuItemsTest() {
+	public void viewAllMenuItemsTest() {
 		// Test if Menu Item list is not null but empty - boundary
 		assertNotNull("Test if there is valid Menu Item arraylist to retrieve menu item", menuItemList);
 		// test if the list of menu items retrieved from the C206_CaseStudy is empty - boundary
@@ -157,7 +157,7 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test // Bernadette
-	public void doViewMenuItemByPriceRangeTest() {
+	public void canViewByPriceRangeTest() {
 		// Given an empty list, after adding 4 items, test if the arraylist size is 6 -
 		// normal condition
 		C206_CaseStudy.addMenuItem(menuItemList, menu1);
@@ -170,17 +170,17 @@ public class C206_CaseStudyTest {
 
 		// Test if these menu items fall under the price range between $2 to $3
 		// normal condition
-		Boolean ok = C206_CaseStudy.doViewByPriceRange(menuItemList, 2.00, 3.00);
+		Boolean ok = C206_CaseStudy.canViewByPriceRange(menuItemList, 2.00, 3.00);
 		assertTrue("Test if these menu items fall under the range between $2 to $3", ok);
 
 		// Test if these menu items fall under the price range between $4 to $4
 		// error condition
-		ok = C206_CaseStudy.doViewByPriceRange(menuItemList, 4.00, 5.00);
+		ok = C206_CaseStudy.canViewByPriceRange(menuItemList, 4.00, 5.00);
 		assertFalse("Test if these menu items fall under the range between $4 to $5", ok);
 	}
 
 	@Test // Bernadette
-	public void canSearchByCategory() {
+	public void canSearchByCategoryTest() {
 		// Given an empty list, after adding 6 items, test if the arraylist size is 6 -
 		// normal condition
 		C206_CaseStudy.addMenuItem(menuItemList, menu1);
