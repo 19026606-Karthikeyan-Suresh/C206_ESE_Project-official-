@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class C206_CaseStudy {
+public class CanteenApp {
 
 	public static void main(String[] args) {
 
@@ -52,7 +52,7 @@ public class C206_CaseStudy {
 
 				if (itemType == 1) { // Bernadette	
 
-					C206_CaseStudy.viewAllMenuItem(menuItemList);
+					CanteenApp.viewAllMenuItem(menuItemList);
 					optionMenuItemList();
 					int optionMenuItem = Helper.readInt("Enter option for menu item > ");
 
@@ -62,10 +62,10 @@ public class C206_CaseStudy {
 
 						if (chooseUpdateMenu == 1) {
 							// update name of menu item
-							C206_CaseStudy.updateMenuItemName(menuItemList);
+							CanteenApp.updateMenuItemName(menuItemList);
 						} else if (chooseUpdateMenu == 2) {
 							// update price of menu item
-							C206_CaseStudy.updateMenuItemPrice(menuItemList);
+							CanteenApp.updateMenuItemPrice(menuItemList);
 						} else {
 							System.out.println("Invalid choose update");
 						}
@@ -79,13 +79,13 @@ public class C206_CaseStudy {
 
 				} else if (itemType == 2) {
 					// add menu item
-					C206_CaseStudy.viewAllMenuItem(menuItemList);
+					CanteenApp.viewAllMenuItem(menuItemList);
 					MenuItem addItem = addItem();
-					C206_CaseStudy.addMenuItem(menuItemList, addItem);
+					CanteenApp.addMenuItem(menuItemList, addItem);
 
 				} else if (itemType == 3) {
 					// delete menu item
-					C206_CaseStudy.deleteMenuItem(menuItemList);
+					CanteenApp.deleteMenuItem(menuItemList);
 
 				} else {
 					System.out.println("Invalid type");
@@ -93,22 +93,22 @@ public class C206_CaseStudy {
 // ADD, VIEW AND DELETE ACCOUNT OPTIONS FOR USER TO CHOOSE.
 			} else if (option == 2) { // Ariezal
 				
-				C206_CaseStudy.setHeader("View, Add, Delete Account");
+				CanteenApp.setHeader("View, Add, Delete Account");
 				userAccountTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select type > ");
 
 				if (itemType == 1) {
 					// View All Accounts
-					C206_CaseStudy.viewAllAccounts(accountList);
+					CanteenApp.viewAllAccounts(accountList);
 
 				} else if (itemType == 2) {
 					// Add Account
-					C206_CaseStudy.addAccount(accountList);
+					CanteenApp.addAccount(accountList);
 
 				} else if (itemType == 3) {
 					// Delete Account
-					C206_CaseStudy.deleteAccount(accountList);
+					CanteenApp.deleteAccount(accountList);
 					
 				} else if (itemType == 4) {
 					// Update Account or Password
@@ -117,7 +117,7 @@ public class C206_CaseStudy {
 
 					if (chooseUpdateAccount == 1) {
 						// update username
-						C206_CaseStudy.updateAccountUsername(accountList);
+						CanteenApp.updateAccountUsername(accountList);
 					} else if (chooseUpdateAccount == 2) {
 						// update password
 //						C206_CaseStudy.updateAccountPassword(accountList);
@@ -134,7 +134,7 @@ public class C206_CaseStudy {
 				int itemType = 0;
 				String user = Helper.readString("Enter Account Name: ");
 				while (itemType != 6) {
-					C206_CaseStudy.setHeader("1. View Order(s) " + "\n2. Add Order " + "\n3. Delete Order "
+					CanteenApp.setHeader("1. View Order(s) " + "\n2. Add Order " + "\n3. Delete Order "
 							+ "\n4. Update Order " + "\n5. Set Order Delivery Time " + "\n6. Quit Order Menu");
 					itemType = Helper.readInt("Enter option to select type > ");
 					System.out.println("");
@@ -143,18 +143,18 @@ public class C206_CaseStudy {
 					if (itemType == 1) {
 						// View All Order
 						System.out.println("");
-						System.out.println(C206_CaseStudy.viewAllOrder(orderList, user));
+						System.out.println(CanteenApp.viewAllOrder(orderList, user));
 
 					} else if (itemType == 2) {
 						// Add Order
 						itemName = Helper.readString("Enter name of Item in Menu: ");
 						System.out.println("");
-						C206_CaseStudy.storeOrder(orderList, user, menuItemList2, itemName);
+						CanteenApp.storeOrder(orderList, user, menuItemList2, itemName);
 
 					} else if (itemType == 3) {
 						// Delete Order
 						System.out.println("");
-						C206_CaseStudy.deleteOrder(orderList, user);
+						CanteenApp.deleteOrder(orderList, user);
 					} else if (itemType == 4) {
 						// Update Order
 						String st = "";
@@ -167,39 +167,39 @@ public class C206_CaseStudy {
 							b = false;
 
 						if (st == "")
-							C206_CaseStudy.updateOrder(orderList, user, b);
+							CanteenApp.updateOrder(orderList, user, b);
 						else if (c == '\u0000' || c != 'y' || c != 'Y' || c != 'n' || c != 'N')
-							C206_CaseStudy.updateOrder(orderList, user, st);
+							CanteenApp.updateOrder(orderList, user, st);
 						else if (st == "" && (c == '\u0000' || c != 'y' || c != 'Y' || c != 'n' || c != 'N'))
 							System.out.println("Please at least enter the status of the order.");
 						else
-							C206_CaseStudy.updateOrder(orderList, user, st, b);
+							CanteenApp.updateOrder(orderList, user, st, b);
 
 					} else if (itemType == 5) {
 						String time = Helper.readString(
 								"Enter desired delivery time in 24 hour format, with at least a 24 hour gap before delivery: ");
-						C206_CaseStudy.deliveryOrder(orderList, user, time);
+						CanteenApp.deliveryOrder(orderList, user, time);
 					} else if (itemType == 6) {
 
 					} else {
 						System.out.println("\nInvalid type");
 					}
 				}
-				System.out.println(C206_CaseStudy.summaryOrder(orderList, user));
+				System.out.println(CanteenApp.summaryOrder(orderList, user));
 
 			} else if (option == 4) { // Karthik
 				POlistMenu();
 				int ItemType = Helper.readInt("Enter an option > ");
 				if (ItemType == 1) {
-					C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
+					CanteenApp.ViewPurchaseOrder(purchaseOrderList);
 					PurchaseOrder addPurchaseOrderItem = PurchaseOrderItem();
-					C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, addPurchaseOrderItem);
+					CanteenApp.addPurchaseOrderItem(purchaseOrderList, addPurchaseOrderItem);
 					
 				} else if (ItemType == 2) {
-					C206_CaseStudy.deletePurchaseOrderItem(purchaseOrderList);
+					CanteenApp.deletePurchaseOrderItem(purchaseOrderList);
 					
 				}else if (ItemType == 3) {
-					C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
+					CanteenApp.ViewPurchaseOrder(purchaseOrderList);
 				}else if (ItemType == 4) {
 					UpdateDeliveryDate(purchaseOrderList);
 				} else if (ItemType == 5) {
@@ -221,7 +221,7 @@ public class C206_CaseStudy {
 
 // -------------------Program Layouts -----------------
 	public static void userTypeMenu() {
-		C206_CaseStudy.setHeader("USER TYPE MENU");
+		CanteenApp.setHeader("USER TYPE MENU");
 		System.out.println("1. View All");
 		System.out.println("2. Add");
 		System.out.println("3. Delete");
@@ -230,7 +230,7 @@ public class C206_CaseStudy {
 	}
 
 	public static void optionMenu() {
-		C206_CaseStudy.setHeader("OPTION MENU");
+		CanteenApp.setHeader("OPTION MENU");
 		System.out.println("1. Menu Item");
 		System.out.println("2. Account");
 		System.out.println("3. Order");
@@ -241,14 +241,14 @@ public class C206_CaseStudy {
 
 	// Bernadette
 	public static void chooseUpdateMenuType() {
-		C206_CaseStudy.setHeader("UPDATE NAME OR PRICE?");
+		CanteenApp.setHeader("UPDATE NAME OR PRICE?");
 		System.out.println("1. Update Name of Menu Item");
 		System.out.println("2. Update Price of Menu Item");
 	}
 
 	// Bernadette
 	public static void optionMenuItemList() {
-		C206_CaseStudy.setHeader("MENU ITEM OPTION");
+		CanteenApp.setHeader("MENU ITEM OPTION");
 		System.out.println("1. Update Menu Item - Name and Price");
 		System.out.println("2. View Menu Item by Price Range");
 		System.out.println("3. Search Menu Item by Category");
@@ -256,7 +256,7 @@ public class C206_CaseStudy {
 	
 	// Karthik
 	public static void POlistMenu() {
-		C206_CaseStudy.setHeader("PURCHASE ORDER MENU");
+		CanteenApp.setHeader("PURCHASE ORDER MENU");
 		System.out.println("1. Add Purchase Order Item");
 		System.out.println("2. Delete Purchase Order Item");
 		System.out.println("3. View Purchase Order items");
@@ -268,7 +268,7 @@ public class C206_CaseStudy {
 
 
 	public static void userAccountTypeMenu() { //Ariezal 
-		C206_CaseStudy.setHeader("USER ACCOUNT TYPE MENU");
+		CanteenApp.setHeader("USER ACCOUNT TYPE MENU");
 		System.out.println("1. View All");
 		System.out.println("2. Add");
 		System.out.println("3. Delete");
@@ -280,7 +280,7 @@ public class C206_CaseStudy {
 
 
 	public static void chooseUpdateAccountType() { // Ariezal
-		C206_CaseStudy.setHeader("UPDATE USERNAME OR PASSWORD?");
+		CanteenApp.setHeader("UPDATE USERNAME OR PASSWORD?");
 		System.out.println("1. Update username ");
 		System.out.println("2. Update password ");
 	}
@@ -308,7 +308,7 @@ public class C206_CaseStudy {
 
 	// method to view MenuItem objects in ArrayList - Bernadette
 	public static void viewAllMenuItem(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.setHeader("MENU ITEM LIST");
+		CanteenApp.setHeader("MENU ITEM LIST");
 		String output = String.format("%-15s %-15s %-10s\n", "CATEGORY", "NAME", "PRICE");
 		output += retrieveAllMenuItems(menuItemList);
 
@@ -352,8 +352,8 @@ public class C206_CaseStudy {
 
 	// method for delete menu item name - Bernadette
 	public static void deleteMenuItem(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.viewAllMenuItem(menuItemList);
-		C206_CaseStudy.setHeader("DELETE MENU ITEM");
+		CanteenApp.viewAllMenuItem(menuItemList);
+		CanteenApp.setHeader("DELETE MENU ITEM");
 		String category = Helper.readString("Enter category > ");
 		String newName = Helper.readString("Enter name > ");
 		double price = Helper.readDouble("Enter price > ");
@@ -384,8 +384,8 @@ public class C206_CaseStudy {
 
 	// method for update menu item name - Bernadette
 	public static void updateMenuItemName(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.viewAllMenuItem(menuItemList);
-		C206_CaseStudy.setHeader("UPDATE MENU ITEM NAME");
+		CanteenApp.viewAllMenuItem(menuItemList);
+		CanteenApp.setHeader("UPDATE MENU ITEM NAME");
 		String category = Helper.readString("Enter category > ");
 		double price = Helper.readDouble("Enter price > ");
 		String newName = Helper.readString("Enter new name > ");
@@ -415,8 +415,8 @@ public class C206_CaseStudy {
 
 	// method for update menu item price - Bernadette
 	public static void updateMenuItemPrice(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.viewAllMenuItem(menuItemList);
-		C206_CaseStudy.setHeader("UPDATE MENU ITEM PRICE");
+		CanteenApp.viewAllMenuItem(menuItemList);
+		CanteenApp.setHeader("UPDATE MENU ITEM PRICE");
 		String category = Helper.readString("Enter category > ");
 		String name = Helper.readString("Enter name > ");
 		double newPrice = Helper.readDouble("Enter new price > ");
@@ -453,8 +453,8 @@ public class C206_CaseStudy {
 
 	// method to view menu items by price range - Bernadette
 	public static void viewMenuItemsByPriceRange(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.viewAllMenuItem(menuItemList);
-		C206_CaseStudy.setHeader("VIEW MENU ITEMS BY PRICE RANGE");
+		CanteenApp.viewAllMenuItem(menuItemList);
+		CanteenApp.setHeader("VIEW MENU ITEMS BY PRICE RANGE");
 
 		if (!menuItemList.isEmpty()) {
 
@@ -496,8 +496,8 @@ public class C206_CaseStudy {
 
 	// method to search menu items by category - Bernadette
 	public static void searchMenuItemsByCategory(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.viewAllMenuItem(menuItemList);
-		C206_CaseStudy.setHeader("SEARCH MENU ITEMS BY CATEGORY");
+		CanteenApp.viewAllMenuItem(menuItemList);
+		CanteenApp.setHeader("SEARCH MENU ITEMS BY CATEGORY");
 
 		if (!menuItemList.isEmpty()) {
 
@@ -522,7 +522,7 @@ public class C206_CaseStudy {
 
 	// Add Account 
 	public static void addAccount(ArrayList<Account>accountList) {
-		C206_CaseStudy.setHeader("ADD NEW ACCOUNT");
+		CanteenApp.setHeader("ADD NEW ACCOUNT");
 		
 		String username = Helper.readString("Enter Username > ");
 		String password = Helper.readString("Enter a new password > ");
@@ -548,7 +548,7 @@ public class C206_CaseStudy {
 	}	
 	//View Account	- Ariezal
 	public static void viewAllAccounts (ArrayList<Account>accountList) {
-		C206_CaseStudy.setHeader("VIEW ALL ACCOUNTS");
+		CanteenApp.setHeader("VIEW ALL ACCOUNTS");
 		
 		String output = String.format ("%-15s %-15s %-15s\n", "USERNAME", "PASSWORD", "USER ROLE" );
 		
@@ -580,8 +580,8 @@ public class C206_CaseStudy {
 
 	// Delete account	- Ariezal
 	public static void deleteAccount (ArrayList<Account>accountList) {
-		C206_CaseStudy.viewAllAccounts(accountList);
-		C206_CaseStudy.setHeader("DELETE AN ACCOUNT");
+		CanteenApp.viewAllAccounts(accountList);
+		CanteenApp.setHeader("DELETE AN ACCOUNT");
 		
 		String username = Helper.readString("Enter username > ");
 		String password = Helper.readString("Enter password > ");
@@ -597,7 +597,7 @@ public class C206_CaseStudy {
 		// Update Account - Ariezal
 	}	
 	public static void updateAccount(ArrayList<Account> accountList) {
-		C206_CaseStudy.setHeader("Update Account Details");
+		CanteenApp.setHeader("Update Account Details");
 		
 		String username = Helper.readString("Enter username > ");
 		String password = Helper.readString("Enter password> ");
@@ -637,8 +637,8 @@ public class C206_CaseStudy {
 
 		//method for account username update - Ariezal
 		public static void updateAccountUsername(ArrayList<Account>accountList) {
-			C206_CaseStudy.viewAllAccounts(accountList);
-			C206_CaseStudy.setHeader("UPDATE USERNAME");
+			CanteenApp.viewAllAccounts(accountList);
+			CanteenApp.setHeader("UPDATE USERNAME");
 			String username = Helper.readString("Enter username > ");
 			
 			boolean isFound = false;
@@ -668,8 +668,8 @@ public class C206_CaseStudy {
 			// method for account password update - Ariezal
 		public static void updateAccountPassword(ArrayList<Account> accountList) {
 			
-			C206_CaseStudy.viewAllAccounts(accountList);
-			C206_CaseStudy.setHeader("UPDATE ACCOUNT PASSWORD");
+			CanteenApp.viewAllAccounts(accountList);
+			CanteenApp.setHeader("UPDATE ACCOUNT PASSWORD");
 			
 			String username = Helper.readString("Enter username > ");
 			boolean isFound = false;
@@ -901,8 +901,8 @@ public class C206_CaseStudy {
 
 		// method for delete purchase order item 
 		public static void deletePurchaseOrderItem(ArrayList<PurchaseOrder> purchaseOrderList) {
-			C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
-			C206_CaseStudy.setHeader("DELETE PURCHASE ORDER ITEM");
+			CanteenApp.ViewPurchaseOrder(purchaseOrderList);
+			CanteenApp.setHeader("DELETE PURCHASE ORDER ITEM");
 			String itemName = Helper.readString("Enter itemName > ");
 			int itemQuantity = Helper.readInt("Enter item Quantity > ");
 			double itemUnitPrice = Helper.readDouble("Enter item price >");
@@ -929,7 +929,7 @@ public class C206_CaseStudy {
 	
 	//Method to View Purchase Order List
 	public static void ViewPurchaseOrder(ArrayList<PurchaseOrder> purchaseOrderList) {
-		C206_CaseStudy.setHeader("PURCHASE ORDER LIST");
+		CanteenApp.setHeader("PURCHASE ORDER LIST");
 		String output = String.format("%-15s %-10s %-10s %-15s\n", "Name", "Quantity", "Price", "Delivery Date");
 		output += RetrievePurchaseOrder(purchaseOrderList);
 
@@ -957,8 +957,8 @@ public class C206_CaseStudy {
 	
 	//Method to Update Delivery Date and Check if it works
 	public static void UpdateDeliveryDate(ArrayList<PurchaseOrder> purchaseOrderList) {
-		C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
-		C206_CaseStudy.setHeader("UPDATE DELIVERY DATE");
+		CanteenApp.ViewPurchaseOrder(purchaseOrderList);
+		CanteenApp.setHeader("UPDATE DELIVERY DATE");
 		String itemName = Helper.readString("Enter an item name > ");
 		int itemQuantity = Helper.readInt("Enter item quantity > ");
 		double itemUnitPrice = Helper.readDouble("Enter item price > ");
@@ -1002,8 +1002,8 @@ public class C206_CaseStudy {
 	
 	//Method to search Purchase Order Items by Item Name
 	public static void searchPurchaseOrderItemsByItemName(ArrayList<PurchaseOrder> purchaseOrderList) {
-		C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
-		C206_CaseStudy.setHeader("SEARCH PURCHASE ORDER ITEMS BY ITEM NAME");
+		CanteenApp.ViewPurchaseOrder(purchaseOrderList);
+		CanteenApp.setHeader("SEARCH PURCHASE ORDER ITEMS BY ITEM NAME");
 
 		if (!purchaseOrderList.isEmpty()) {
 
@@ -1045,8 +1045,8 @@ public class C206_CaseStudy {
 		}
 		//Method to search by delivery Date
 		public static void searchPurchaseOrderItemsByDeliveryDate(ArrayList<PurchaseOrder> purchaseOrderList) {
-			C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
-			C206_CaseStudy.setHeader("SEARCH PURCHASE ORDER ITEMS BY DELIVERY DATE");
+			CanteenApp.ViewPurchaseOrder(purchaseOrderList);
+			CanteenApp.setHeader("SEARCH PURCHASE ORDER ITEMS BY DELIVERY DATE");
 
 			if (!purchaseOrderList.isEmpty()) {
 
