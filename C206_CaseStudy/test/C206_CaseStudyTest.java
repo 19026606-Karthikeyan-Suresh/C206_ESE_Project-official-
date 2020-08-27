@@ -428,8 +428,25 @@ public class C206_CaseStudyTest {
 		// error condition
 		correct = C206_CaseStudy.SearchByItemName(purchaseOrderList, "banana");
 		assertFalse("Test if purchaseOrder cans search by item Name", correct);
+		
 	}
+	@Test // Karthik
+	public void searchPurchaseOrderItemsByDeliveryDateTest() {
+		// Given an empty list, after adding 3 items, test if the arraylist size is 3 -
+		// normal condition
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO1);
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO2);
+		C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, PO3);
+		assertEquals("Test that  PurchaseOrder arraylist size is 3", 3, purchaseOrderList.size());
 
+		// normal condition
+		Boolean correct = C206_CaseStudy.CheckByDeliveryDate(purchaseOrderList, "21/3/2020");
+		assertTrue("Test if PurchaseOrder items can search using item Name", correct);
+
+		// error condition
+		correct = C206_CaseStudy.CheckByDeliveryDate(purchaseOrderList, "21/4/2020");
+		assertFalse("Test if purchaseOrder cans search by item Name", correct);
+	}
 	@After
 	public void tearDown() throws Exception {
 
