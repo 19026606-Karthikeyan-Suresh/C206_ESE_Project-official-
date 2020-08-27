@@ -416,7 +416,7 @@ public class CanteenAppTest {
 		assertFalse("Test if the existing purchase Order item can be deleted from the list?", ok);
 	}
 	@Test //Karthik
-	public void CheckUpdateDeliveryDate() {
+	public void CheckUpdateDeliveryDateTest() {
 		// boundary condition
 		assertNotNull("Test if there is valid PurchaseOrder arraylist to add to", purchaseOrderList);
 		CanteenApp.addPurchaseOrderItem(purchaseOrderList, PO1);
