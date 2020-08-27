@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class C206_CaseStudy {
+public class CanteenApp {
 
 	public static void main(String[] args) {
 
@@ -30,14 +30,13 @@ public class C206_CaseStudy {
 		menuItemList2.add(new MenuItem("Soda", "Sprite", 1.50));
 		menuItemList2.add(new MenuItem("Sweets", "Lollipops", 2.00));
 		orderList.add(new Order("Jerry", "pending", true, orderMenu, "now"));
-		
+
 		// Ariezal Account Objects
 		ArrayList<Account> accountList = new ArrayList<Account>();
 		accountList.add(new Account("James", "canteen123", "Staff"));
 		accountList.add(new Account("Zac", "canteen123", "Canteen Admin"));
 		accountList.add(new Account("Joe", "canteen123", "Customer"));
 		accountList.add(new Account("Aaron", "canteen123", "Staff"));
-		
 
 		int option = 0;
 
@@ -47,69 +46,68 @@ public class C206_CaseStudy {
 			option = Helper.readInt("Enter an option > ");
 
 			if (option == 1) {
-				userTypeMenu();
+				optionMenuItem();
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
-				if (itemType == 1) { // Bernadette	
-
-					C206_CaseStudy.viewAllMenuItem(menuItemList);
-					optionMenuItemList();
-					int optionMenuItem = Helper.readInt("Enter option for menu item > ");
-
-					if (optionMenuItem == 1) {
-						chooseUpdateMenuType();
-						int chooseUpdateMenu = Helper.readInt("Choose update for menu item > ");
-
-						if (chooseUpdateMenu == 1) {
-							// update name of menu item
-							C206_CaseStudy.updateMenuItemName(menuItemList);
-						} else if (chooseUpdateMenu == 2) {
-							// update price of menu item
-							C206_CaseStudy.updateMenuItemPrice(menuItemList);
-						} else {
-							System.out.println("Invalid choose update");
-						}
-					} else if (optionMenuItem == 2) {
-						// view menu items by price range
-						viewMenuItemsByPriceRange(menuItemList);
-					} else if (optionMenuItem == 3) {
-						// search menu items by category
-						searchMenuItemsByCategory(menuItemList);
-					}
+				if (itemType == 1) { // Bernadette
+					// view menu item
+					CanteenApp.viewAllMenuItem(menuItemList);
 
 				} else if (itemType == 2) {
 					// add menu item
-					C206_CaseStudy.viewAllMenuItem(menuItemList);
+					CanteenApp.viewAllMenuItem(menuItemList);
 					MenuItem addItem = addItem();
-					C206_CaseStudy.addMenuItem(menuItemList, addItem);
+					CanteenApp.addMenuItem(menuItemList, addItem);
 
 				} else if (itemType == 3) {
 					// delete menu item
-					C206_CaseStudy.deleteMenuItem(menuItemList);
+					CanteenApp.deleteMenuItem(menuItemList);
 
+				} else if (itemType == 4) {
+					// update menu item
+					chooseUpdateMenuType();
+					int chooseUpdate = Helper.readInt("Choose the option to update (name/price) > ");
+					if (chooseUpdate == 1) {
+						// update menu item by name
+						CanteenApp.updateMenuItemName(menuItemList);
+					} else if (chooseUpdate == 2) {
+						// update menu item by price
+						CanteenApp.updateMenuItemPrice(menuItemList);
+					} else {
+						System.out.println("Invalid choose update");
+					}
+					
+				} else if (itemType == 5) {
+					// view menu items by price range
+					CanteenApp.viewMenuItemsByPriceRange(menuItemList);
+					
+				} else if (itemType == 6) {
+					// search menu items by category
+					CanteenApp.searchMenuItemsByCategory(menuItemList);
+					
 				} else {
-					System.out.println("Invalid type");
+					System.out.println("Invalid item type");
 				}
-// ADD, VIEW AND DELETE ACCOUNT OPTIONS FOR USER TO CHOOSE.
+
 			} else if (option == 2) { // Ariezal
-				
-				C206_CaseStudy.setHeader("View, Add, Delete Account");
+
+				CanteenApp.setHeader("View, Add, Delete Account");
 				userAccountTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select type > ");
 
 				if (itemType == 1) {
 					// View All Accounts
-					C206_CaseStudy.viewAllAccounts(accountList);
+					CanteenApp.viewAllAccounts(accountList);
 
 				} else if (itemType == 2) {
 					// Add Account
-					C206_CaseStudy.addAccount(accountList);
+					CanteenApp.addAccount(accountList);
 
 				} else if (itemType == 3) {
 					// Delete Account
-					C206_CaseStudy.deleteAccount(accountList);
-					
+					CanteenApp.deleteAccount(accountList);
+
 				} else if (itemType == 4) {
 					// Update Account or Password
 					chooseUpdateAccountType();
@@ -117,7 +115,7 @@ public class C206_CaseStudy {
 
 					if (chooseUpdateAccount == 1) {
 						// update username
-						C206_CaseStudy.updateAccountUsername(accountList);
+						CanteenApp.updateAccountUsername(accountList);
 					} else if (chooseUpdateAccount == 2) {
 						// update password
 //						C206_CaseStudy.updateAccountPassword(accountList);
@@ -134,7 +132,7 @@ public class C206_CaseStudy {
 				int itemType = 0;
 				String user = Helper.readString("Enter Account Name: ");
 				while (itemType != 6) {
-					C206_CaseStudy.setHeader("1. View Order(s) " + "\n2. Add Order " + "\n3. Delete Order "
+					CanteenApp.setHeader("1. View Order(s) " + "\n2. Add Order " + "\n3. Delete Order "
 							+ "\n4. Update Order " + "\n5. Set Order Delivery Time " + "\n6. Quit Order Menu");
 					itemType = Helper.readInt("Enter option to select type > ");
 					System.out.println("");
@@ -143,18 +141,18 @@ public class C206_CaseStudy {
 					if (itemType == 1) {
 						// View All Order
 						System.out.println("");
-						System.out.println(C206_CaseStudy.viewAllOrder(orderList, user));
+						System.out.println(CanteenApp.viewAllOrder(orderList, user));
 
 					} else if (itemType == 2) {
 						// Add Order
 						itemName = Helper.readString("Enter name of Item in Menu: ");
 						System.out.println("");
-						C206_CaseStudy.storeOrder(orderList, user, menuItemList2, itemName);
+						CanteenApp.storeOrder(orderList, user, menuItemList2, itemName);
 
 					} else if (itemType == 3) {
 						// Delete Order
 						System.out.println("");
-						C206_CaseStudy.deleteOrder(orderList, user);
+						CanteenApp.deleteOrder(orderList, user);
 					} else if (itemType == 4) {
 						// Update Order
 						String st = "";
@@ -167,38 +165,38 @@ public class C206_CaseStudy {
 							b = false;
 
 						if (st == "")
-							C206_CaseStudy.updateOrder(orderList, user, b);
+							CanteenApp.updateOrder(orderList, user, b);
 						else if (c == '\u0000' || c != 'y' || c != 'Y' || c != 'n' || c != 'N')
-							C206_CaseStudy.updateOrder(orderList, user, st);
+							CanteenApp.updateOrder(orderList, user, st);
 						else if (st == "" && (c == '\u0000' || c != 'y' || c != 'Y' || c != 'n' || c != 'N'))
 							System.out.println("Please at least enter the status of the order.");
 						else
-							C206_CaseStudy.updateOrder(orderList, user, st, b);
+							CanteenApp.updateOrder(orderList, user, st, b);
 
 					} else if (itemType == 5) {
 						String time = Helper.readString(
 								"Enter desired delivery time in 24 hour format, with at least a 24 hour gap before delivery: ");
-						C206_CaseStudy.deliveryOrder(orderList, user, time);
+						CanteenApp.deliveryOrder(orderList, user, time);
 					} else if (itemType == 6) {
 
 					} else {
 						System.out.println("\nInvalid type");
 					}
 				}
-				System.out.println(C206_CaseStudy.summaryOrder(orderList, user));
+				System.out.println(CanteenApp.summaryOrder(orderList, user));
 
 			} else if (option == 4) { // Karthik
 				POlistMenu();
 				int ItemType = Helper.readInt("Enter an option > ");
 				if (ItemType == 1) {
-					C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
+					CanteenApp.ViewPurchaseOrder(purchaseOrderList);
 					PurchaseOrder addPurchaseOrderItem = PurchaseOrderItem();
-					C206_CaseStudy.addPurchaseOrderItem(purchaseOrderList, addPurchaseOrderItem);
+					CanteenApp.addPurchaseOrderItem(purchaseOrderList, addPurchaseOrderItem);
 				} else if (ItemType == 2) {
-					C206_CaseStudy.deletePurchaseOrderItem(purchaseOrderList);
-					
-				}else if (ItemType == 3) {
-					C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
+					CanteenApp.deletePurchaseOrderItem(purchaseOrderList);
+
+				} else if (ItemType == 3) {
+					CanteenApp.ViewPurchaseOrder(purchaseOrderList);
 				}
 				if (ItemType == 4) {
 					UpdateDeliveryDate(purchaseOrderList);
@@ -218,17 +216,9 @@ public class C206_CaseStudy {
 	}
 
 // -------------------Program Layouts -----------------
-	public static void userTypeMenu() {
-		C206_CaseStudy.setHeader("USER TYPE MENU");
-		System.out.println("1. View All");
-		System.out.println("2. Add");
-		System.out.println("3. Delete");
-
-
-	}
 
 	public static void optionMenu() {
-		C206_CaseStudy.setHeader("OPTION MENU");
+		CanteenApp.setHeader("OPTION MENU");
 		System.out.println("1. Menu Item");
 		System.out.println("2. Account");
 		System.out.println("3. Order");
@@ -238,23 +228,26 @@ public class C206_CaseStudy {
 	}
 
 	// Bernadette
+	public static void optionMenuItem() {
+		CanteenApp.setHeader("MENU ITEM OPTION");
+		System.out.println("1. View Menu Item");
+		System.out.println("2. Add Menu Item");
+		System.out.println("3. Delete Menu Item");
+		System.out.println("4. Update Menu Item - Name and Price");
+		System.out.println("5. View Menu Item by Price Range");
+		System.out.println("6. Search Menu Item by Category");
+	}
+
+	// Bernadette
 	public static void chooseUpdateMenuType() {
-		C206_CaseStudy.setHeader("UPDATE NAME OR PRICE?");
+		CanteenApp.setHeader("UPDATE NAME OR PRICE?");
 		System.out.println("1. Update Name of Menu Item");
 		System.out.println("2. Update Price of Menu Item");
 	}
 
-	// Bernadette
-	public static void optionMenuItemList() {
-		C206_CaseStudy.setHeader("MENU ITEM OPTION");
-		System.out.println("1. Update Menu Item - Name and Price");
-		System.out.println("2. View Menu Item by Price Range");
-		System.out.println("3. Search Menu Item by Category");
-	}
-	
 	// Karthik
 	public static void POlistMenu() {
-		C206_CaseStudy.setHeader("PURCHASE ORDER MENU");
+		CanteenApp.setHeader("PURCHASE ORDER MENU");
 		System.out.println("1. Add Purchase Order Item");
 		System.out.println("2. Delete Purchase Order Item");
 		System.out.println("3. View Purchase Order items");
@@ -262,26 +255,20 @@ public class C206_CaseStudy {
 		System.out.println("2. Search item");
 	}
 
-
-	public static void userAccountTypeMenu() { //Ariezal 
-		C206_CaseStudy.setHeader("USER ACCOUNT TYPE MENU");
+	public static void userAccountTypeMenu() { // Ariezal
+		CanteenApp.setHeader("USER ACCOUNT TYPE MENU");
 		System.out.println("1. View All");
 		System.out.println("2. Add");
 		System.out.println("3. Delete");
 		System.out.println("4. Update Account");
 
-
 	}
 
-
-
 	public static void chooseUpdateAccountType() { // Ariezal
-		C206_CaseStudy.setHeader("UPDATE USERNAME OR PASSWORD?");
+		CanteenApp.setHeader("UPDATE USERNAME OR PASSWORD?");
 		System.out.println("1. Update username ");
 		System.out.println("2. Update password ");
 	}
-
-
 
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
@@ -291,7 +278,7 @@ public class C206_CaseStudy {
 //-------Program Layouts------------------------------------------
 
 //METHODS FOR MENU------------------------------------------------------------------
-	
+
 	// method to view MenuItem objects in ArrayList - Bernadette
 	public static String retrieveAllMenuItems(ArrayList<MenuItem> menuItemList) {
 		String output = "";
@@ -304,7 +291,7 @@ public class C206_CaseStudy {
 
 	// method to view MenuItem objects in ArrayList - Bernadette
 	public static void viewAllMenuItem(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.setHeader("MENU ITEM LIST");
+		CanteenApp.setHeader("MENU ITEM LIST");
 		String output = String.format("%-15s %-15s %-10s\n", "CATEGORY", "NAME", "PRICE");
 		output += retrieveAllMenuItems(menuItemList);
 
@@ -348,8 +335,8 @@ public class C206_CaseStudy {
 
 	// method for delete menu item name - Bernadette
 	public static void deleteMenuItem(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.viewAllMenuItem(menuItemList);
-		C206_CaseStudy.setHeader("DELETE MENU ITEM");
+		CanteenApp.viewAllMenuItem(menuItemList);
+		CanteenApp.setHeader("DELETE MENU ITEM");
 		String category = Helper.readString("Enter category > ");
 		String newName = Helper.readString("Enter name > ");
 		double price = Helper.readDouble("Enter price > ");
@@ -380,8 +367,8 @@ public class C206_CaseStudy {
 
 	// method for update menu item name - Bernadette
 	public static void updateMenuItemName(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.viewAllMenuItem(menuItemList);
-		C206_CaseStudy.setHeader("UPDATE MENU ITEM NAME");
+		CanteenApp.viewAllMenuItem(menuItemList);
+		CanteenApp.setHeader("UPDATE MENU ITEM NAME");
 		String category = Helper.readString("Enter category > ");
 		double price = Helper.readDouble("Enter price > ");
 		String newName = Helper.readString("Enter new name > ");
@@ -411,8 +398,8 @@ public class C206_CaseStudy {
 
 	// method for update menu item price - Bernadette
 	public static void updateMenuItemPrice(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.viewAllMenuItem(menuItemList);
-		C206_CaseStudy.setHeader("UPDATE MENU ITEM PRICE");
+		CanteenApp.viewAllMenuItem(menuItemList);
+		CanteenApp.setHeader("UPDATE MENU ITEM PRICE");
 		String category = Helper.readString("Enter category > ");
 		String name = Helper.readString("Enter name > ");
 		double newPrice = Helper.readDouble("Enter new price > ");
@@ -449,8 +436,8 @@ public class C206_CaseStudy {
 
 	// method to view menu items by price range - Bernadette
 	public static void viewMenuItemsByPriceRange(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.viewAllMenuItem(menuItemList);
-		C206_CaseStudy.setHeader("VIEW MENU ITEMS BY PRICE RANGE");
+		CanteenApp.viewAllMenuItem(menuItemList);
+		CanteenApp.setHeader("VIEW MENU ITEMS BY PRICE RANGE");
 
 		if (!menuItemList.isEmpty()) {
 
@@ -492,8 +479,8 @@ public class C206_CaseStudy {
 
 	// method to search menu items by category - Bernadette
 	public static void searchMenuItemsByCategory(ArrayList<MenuItem> menuItemList) {
-		C206_CaseStudy.viewAllMenuItem(menuItemList);
-		C206_CaseStudy.setHeader("SEARCH MENU ITEMS BY CATEGORY");
+		CanteenApp.viewAllMenuItem(menuItemList);
+		CanteenApp.setHeader("SEARCH MENU ITEMS BY CATEGORY");
 
 		if (!menuItemList.isEmpty()) {
 
@@ -508,108 +495,111 @@ public class C206_CaseStudy {
 		}
 	}
 
-
-	
 //METHODS FOR MENU -------------------------------------------------------------------------------------------------------	
 
 //METHODS FOR ACCOUNT ARIEZAL
 
 //METHODS FOR ACCOUNT -----------------------------------------------------------------------------------------
 
-	// Add Account 
-	public static void addAccount(ArrayList<Account>accountList) {
-		C206_CaseStudy.setHeader("ADD NEW ACCOUNT");
-		
+	// Add Account
+	public static void addAccount(ArrayList<Account> accountList) {
+		CanteenApp.setHeader("ADD NEW ACCOUNT");
+
 		String username = Helper.readString("Enter Username > ");
 		String password = Helper.readString("Enter a new password > ");
 		String userRole = Helper.readString("Enter the role > ");
-		
+
 		// Check for duplicate account - Ariezal
 		boolean isDuplicate = false;
-		
+
 		for (int i = 0; i < accountList.size(); i++) {
-			if (username.equalsIgnoreCase(accountList.get(i).getUsername()) && 
-					userRole.equalsIgnoreCase(accountList.get(i).getUserRole())) {
-					System.out.println("That account already exist! Try Again!");
-					isDuplicate = true;
-					break;
-				
+			if (username.equalsIgnoreCase(accountList.get(i).getUsername())
+					&& userRole.equalsIgnoreCase(accountList.get(i).getUserRole())) {
+				System.out.println("That account already exist! Try Again!");
+				isDuplicate = true;
+				break;
+
 			}
 		}
-		// If account is not duplicated, it will create the account requested by the user. - Ariezal
+		// If account is not duplicated, it will create the account requested by the
+		// user. - Ariezal
 		if (isDuplicate == false) {
 			accountList.add(new Account(username, password, userRole));
-			System.out.println("New Account added!"); 
+			System.out.println("New Account added!");
 		}
-	}	
-	//View Account	- Ariezal
-	public static void viewAllAccounts (ArrayList<Account>accountList) {
-		C206_CaseStudy.setHeader("VIEW ALL ACCOUNTS");
-		
-		String output = String.format ("%-15s %-15s %-15s\n", "USERNAME", "PASSWORD", "USER ROLE" );
-		
-		for (int i = 0; i <accountList.size();i++)
-			output += String.format("%-15s %-15s %-15s\n", accountList.get(i).getUsername(), accountList.get(i).getPassword(), 
-					accountList.get(i).getUserRole());
+	}
+
+	// View Account - Ariezal
+	public static void viewAllAccounts(ArrayList<Account> accountList) {
+		CanteenApp.setHeader("VIEW ALL ACCOUNTS");
+
+		String output = String.format("%-15s %-15s %-15s\n", "USERNAME", "PASSWORD", "USER ROLE");
+
+		for (int i = 0; i < accountList.size(); i++)
+			output += String.format("%-15s %-15s %-15s\n", accountList.get(i).getUsername(),
+					accountList.get(i).getPassword(), accountList.get(i).getUserRole());
 
 		System.out.println(output);
 	}
-	
+
 // To check if the account has been deleted yet - Ariezal
-	public static boolean doDeleteAccount(ArrayList<Account> accountList, String username, String password, String userRole) {
+	public static boolean doDeleteAccount(ArrayList<Account> accountList, String username, String password,
+			String userRole) {
 		boolean isDeleted = false;
-		
+
 		for (int i = 0; i < accountList.size(); i++) {
 			String getUsername = accountList.get(i).getUsername();
-			String getPassword= accountList.get(i).getPassword();
+			String getPassword = accountList.get(i).getPassword();
 			String getUserRole = accountList.get(i).getUserRole();
-			
-			if (username.equalsIgnoreCase(getUsername) && password.equalsIgnoreCase(getPassword) && userRole.equalsIgnoreCase(getUserRole)) {
+
+			if (username.equalsIgnoreCase(getUsername) && password.equalsIgnoreCase(getPassword)
+					&& userRole.equalsIgnoreCase(getUserRole)) {
 				accountList.remove(i);
-				isDeleted= true;
+				isDeleted = true;
 			}
 		}
 		return isDeleted;
 
 	}
-	
 
-	// Delete account	- Ariezal
-	public static void deleteAccount (ArrayList<Account>accountList) {
-		C206_CaseStudy.viewAllAccounts(accountList);
-		C206_CaseStudy.setHeader("DELETE AN ACCOUNT");
-		
+	// Delete account - Ariezal
+	public static void deleteAccount(ArrayList<Account> accountList) {
+		CanteenApp.viewAllAccounts(accountList);
+		CanteenApp.setHeader("DELETE AN ACCOUNT");
+
 		String username = Helper.readString("Enter username > ");
 		String password = Helper.readString("Enter password > ");
 		String userRole = Helper.readString("Enter user role> ");
-		
+
 		Boolean isDeleted = doDeleteAccount(accountList, username, password, userRole);
-		if(isDeleted == false) {
+		if (isDeleted == false) {
 			System.out.println("Account inputed does not exist.");
 		} else {
-			System.out.println("Account deleted! ");	
+			System.out.println("Account deleted! ");
 		}
-		
+
 		// Update Account - Ariezal
-	}	
+	}
+
 	public static void updateAccount(ArrayList<Account> accountList) {
-		C206_CaseStudy.setHeader("Update Account Details");
-		
+		CanteenApp.setHeader("Update Account Details");
+
 		String username = Helper.readString("Enter username > ");
 		String password = Helper.readString("Enter password> ");
-		
+
 		boolean isFound = false;
-		
-		for(int i = 0 ; i < accountList.size(); i++ ) {
-			if (username.equalsIgnoreCase(accountList.get(i).getUsername()) 
+
+		for (int i = 0; i < accountList.size(); i++) {
+			if (username.equalsIgnoreCase(accountList.get(i).getUsername())
 					&& password.equalsIgnoreCase(accountList.get(i).getPassword())) {
-				
+
 				String currentUsername = Helper.readString("Enter current username> ");
 				String currentPassword = Helper.readString("Enter current password> ");
-				if (currentUsername.equals(accountList.get(i).getUsername()) && currentPassword.equals(accountList.get(i).getPassword())) {
+				if (currentUsername.equals(accountList.get(i).getUsername())
+						&& currentPassword.equals(accountList.get(i).getPassword())) {
 					String newUsername = Helper.readString("Enter new Username > ");
 					String newPassword = Helper.readString("Enter new password > ");
-					
+
 					accountList.get(i).setUsername(newUsername);
 					accountList.get(i).setPassword(newPassword);
 
@@ -621,67 +611,61 @@ public class C206_CaseStudy {
 			}
 			if (isFound == false) {
 				System.out.println("This account inputted does not exist.");
-			
-				
-				
+
+			}
+
 		}
-		
-		}
-		
-		
+
 	}
 
-		//method for account username update - Ariezal
-		public static void updateAccountUsername(ArrayList<Account>accountList) {
-			C206_CaseStudy.viewAllAccounts(accountList);
-			C206_CaseStudy.setHeader("UPDATE USERNAME");
-			String username = Helper.readString("Enter username > ");
-			
-			boolean isFound = false;
-	
-			
-			for(int i = 0 ; i < accountList.size(); i++) {
-				if (username.equalsIgnoreCase(accountList.get(i).getUsername())) {
-					
-					String password = Helper.readString("Enter password > ");
-					
-					if(username.equals(accountList.get(i).getUsername()) && password.equals(accountList.get(i).getPassword())) {
-						String newUsername = Helper.readString("Enter new username > ");
-						accountList.get(i).setUsername(newUsername);
-						System.out.println("The username has been successfully updated.");
-						
-					} else {
-						System.out.println("The password inputted is incorrect.");
-					}
-					isFound = true;
-					break;
+	// method for account username update - Ariezal
+	public static void updateAccountUsername(ArrayList<Account> accountList) {
+		CanteenApp.viewAllAccounts(accountList);
+		CanteenApp.setHeader("UPDATE USERNAME");
+		String username = Helper.readString("Enter username > ");
+
+		boolean isFound = false;
+
+		for (int i = 0; i < accountList.size(); i++) {
+			if (username.equalsIgnoreCase(accountList.get(i).getUsername())) {
+
+				String password = Helper.readString("Enter password > ");
+
+				if (username.equals(accountList.get(i).getUsername())
+						&& password.equals(accountList.get(i).getPassword())) {
+					String newUsername = Helper.readString("Enter new username > ");
+					accountList.get(i).setUsername(newUsername);
+					System.out.println("The username has been successfully updated.");
+
+				} else {
+					System.out.println("The password inputted is incorrect.");
 				}
+				isFound = true;
+				break;
 			}
-			if(isFound == false) {
-				System.out.println("This account does not exist.");
-			}	
 		}
-			// method for account password update - Ariezal
+		if (isFound == false) {
+			System.out.println("This account does not exist.");
+		}
+	}
+	// method for account password update - Ariezal
 //		public static void updateAccountPassword(ArrayList<Account> accountList) {
-			
+
 //			C206_CaseStudy.viewAllAccounts(accountList);
 //			C206_CaseStudy.setHeader("UPDATE ACCOUNT PASSWORD");
-			
+
 //			String user = Helper
-			
+
 //		}
-		
+
 //		}
 //	}
-	
 
 //METHODS FOR ACCOUNT ARIEZAL ^^^^^^^^
-	
-
 
 //METHODS FOR ORDER ----------------------------------------------------------------------------------------------
-		
-    // Kenneth
+
+	// Kenneth
 	public static String viewAllOrder(ArrayList<Order> orderList, String user) {
 		String s = "";
 		int u = 0;
@@ -832,64 +816,65 @@ public class C206_CaseStudy {
 
 //METHODS FOR PURCHASE ORDER ----------------------------------------------------------------------------------------------
 	// Karthik
-	
+
 	// method to create MenuItem object - Karthik
 	public static PurchaseOrder PurchaseOrderItem() {
 		String itemName = Helper.readString("Enter itemName > ");
 		int itemQuantity = Helper.readInt("Enter Item Quantity > ");
-		double itemUnitPrice  = Helper.readDouble("Enter Item Unit price > ");
+		double itemUnitPrice = Helper.readDouble("Enter Item Unit price > ");
 		String deliveryDate = Helper.readString("Enter delivery Date > ");
-		
 
 		PurchaseOrder PurchaseOrderItem = new PurchaseOrder(itemName, itemQuantity, itemUnitPrice, deliveryDate);
 		return PurchaseOrderItem;
 	}
-	
+
 	// method to add the purchaseOrderItem object in ArrayList - Karthik
-	public static void addPurchaseOrderItem(ArrayList<PurchaseOrder> purchaseOrderList, PurchaseOrder PurchaseOrderItem) {
+	public static void addPurchaseOrderItem(ArrayList<PurchaseOrder> purchaseOrderList,
+			PurchaseOrder PurchaseOrderItem) {
 
 		purchaseOrderList.add(PurchaseOrderItem);
 		System.out.println("Purchase Order Item added");
 	}
-	
+
 	// method to check if the PurchaseOrderItem is deleted - Karthik
-		public static boolean CheckDeletePurchaseOrderItem(ArrayList<PurchaseOrder> purchaseOrderList, String itemName, int itemQuantity, double itemUnitPrice,
-					String deliveryDate) {
-			boolean isDeleted = false;
+	public static boolean CheckDeletePurchaseOrderItem(ArrayList<PurchaseOrder> purchaseOrderList, String itemName,
+			int itemQuantity, double itemUnitPrice, String deliveryDate) {
+		boolean isDeleted = false;
 
-			for (int i = 0; i < purchaseOrderList.size(); i++) {
-				String getItemName = purchaseOrderList.get(i).getItemName();
-				int getItemQuantity = purchaseOrderList.get(i).getItemQuantity();
-				double getItemUnitPrice = purchaseOrderList.get(i).getItemUnitPrice();
-				String getDeliveryDate = purchaseOrderList.get(i).getDeliveryDate();
-				
+		for (int i = 0; i < purchaseOrderList.size(); i++) {
+			String getItemName = purchaseOrderList.get(i).getItemName();
+			int getItemQuantity = purchaseOrderList.get(i).getItemQuantity();
+			double getItemUnitPrice = purchaseOrderList.get(i).getItemUnitPrice();
+			String getDeliveryDate = purchaseOrderList.get(i).getDeliveryDate();
 
-				if (itemName.equalsIgnoreCase(getItemName) && itemQuantity == getItemQuantity && itemUnitPrice == getItemUnitPrice && deliveryDate.equalsIgnoreCase(getDeliveryDate) ) {
-					purchaseOrderList.remove(i);
-					isDeleted = true;
-				}
-			}
-			return isDeleted;
-		}
-
-		// method for delete purchase order item - Karthik
-		public static void deletePurchaseOrderItem(ArrayList<PurchaseOrder> purchaseOrderList) {
-			C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
-			C206_CaseStudy.setHeader("DELETE PURCHASE ORDER ITEM");
-			String itemName = Helper.readString("Enter itemName > ");
-			int itemQuantity = Helper.readInt("Enter item Quantity > ");
-			double itemUnitPrice = Helper.readDouble("Enter item price >");
-			String deliveryDate = Helper.readString("Enter delivery date > ");
-
-			Boolean isDeleted = CheckDeletePurchaseOrderItem(purchaseOrderList, itemName, itemQuantity, itemUnitPrice, deliveryDate );
-			if (isDeleted == false) {
-				System.out.println("Purchase Order Item cannot be deleted");
-			} else {
-				System.out.println("Purchase Order Item deleted");
+			if (itemName.equalsIgnoreCase(getItemName) && itemQuantity == getItemQuantity
+					&& itemUnitPrice == getItemUnitPrice && deliveryDate.equalsIgnoreCase(getDeliveryDate)) {
+				purchaseOrderList.remove(i);
+				isDeleted = true;
 			}
 		}
-	
-	//Method to retrieve all items in the purchase order list
+		return isDeleted;
+	}
+
+	// method for delete purchase order item - Karthik
+	public static void deletePurchaseOrderItem(ArrayList<PurchaseOrder> purchaseOrderList) {
+		CanteenApp.ViewPurchaseOrder(purchaseOrderList);
+		CanteenApp.setHeader("DELETE PURCHASE ORDER ITEM");
+		String itemName = Helper.readString("Enter itemName > ");
+		int itemQuantity = Helper.readInt("Enter item Quantity > ");
+		double itemUnitPrice = Helper.readDouble("Enter item price >");
+		String deliveryDate = Helper.readString("Enter delivery date > ");
+
+		Boolean isDeleted = CheckDeletePurchaseOrderItem(purchaseOrderList, itemName, itemQuantity, itemUnitPrice,
+				deliveryDate);
+		if (isDeleted == false) {
+			System.out.println("Purchase Order Item cannot be deleted");
+		} else {
+			System.out.println("Purchase Order Item deleted");
+		}
+	}
+
+	// Method to retrieve all items in the purchase order list
 	public static String RetrievePurchaseOrder(ArrayList<PurchaseOrder> purchaseOrderList) {
 		String output = "";
 		for (int i = 0; i < purchaseOrderList.size(); i++) {
@@ -899,17 +884,17 @@ public class C206_CaseStudy {
 		}
 		return output;
 	}
-	
-	//Method to View Purchase Order List
+
+	// Method to View Purchase Order List
 	public static void ViewPurchaseOrder(ArrayList<PurchaseOrder> purchaseOrderList) {
-		C206_CaseStudy.setHeader("PURCHASE ORDER LIST");
+		CanteenApp.setHeader("PURCHASE ORDER LIST");
 		String output = String.format("%-15s %-10s %-10s %-15s\n", "Name", "Quantity", "Price", "Delivery Date");
 		output += RetrievePurchaseOrder(purchaseOrderList);
 
 		System.out.println(output);
 	}
-	
-	//Method to find if Delivery Date has been updated
+
+	// Method to find if Delivery Date has been updated
 	public static boolean CheckUpdateDeliveryDate(ArrayList<PurchaseOrder> purchaseOrderList, String itemName,
 			int itemQuantity, double itemUnitPrice, String deliveryDate) {
 		boolean isDeliveryDateUpdated = false;
@@ -927,11 +912,11 @@ public class C206_CaseStudy {
 		}
 		return isDeliveryDateUpdated;
 	}
-	
-	//Method to Update Delivery Date and Check if it works
+
+	// Method to Update Delivery Date and Check if it works
 	public static void UpdateDeliveryDate(ArrayList<PurchaseOrder> purchaseOrderList) {
-		C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
-		C206_CaseStudy.setHeader("UPDATE DELIVERY DATE");
+		CanteenApp.ViewPurchaseOrder(purchaseOrderList);
+		CanteenApp.setHeader("UPDATE DELIVERY DATE");
 		String itemName = Helper.readString("Enter an item name > ");
 		int itemQuantity = Helper.readInt("Enter item quantity > ");
 		double itemUnitPrice = Helper.readDouble("Enter item price > ");
@@ -945,8 +930,8 @@ public class C206_CaseStudy {
 		}
 
 	}
-	
-	//Method to see if item is in the list
+
+	// Method to see if item is in the list
 	public static boolean SearchByItemName(ArrayList<PurchaseOrder> purchaseOrderList, String SearchItemName) {
 		boolean SearchByItemName = false;
 
@@ -972,11 +957,11 @@ public class C206_CaseStudy {
 		System.out.println(output);
 		return SearchByItemName;
 	}
-	
-	//Method to search Purchase Order Items by Item Name
+
+	// Method to search Purchase Order Items by Item Name
 	public static void searchPurchaseOrderItemsByItemName(ArrayList<PurchaseOrder> purchaseOrderList) {
-		C206_CaseStudy.ViewPurchaseOrder(purchaseOrderList);
-		C206_CaseStudy.setHeader("SEARCH PURCHASE ORDER ITEMS BY ITEM NAME");
+		CanteenApp.ViewPurchaseOrder(purchaseOrderList);
+		CanteenApp.setHeader("SEARCH PURCHASE ORDER ITEMS BY ITEM NAME");
 
 		if (!purchaseOrderList.isEmpty()) {
 
