@@ -38,6 +38,10 @@ public class C206_CaseStudyTest {
 	private PurchaseOrder PO2;
 	private PurchaseOrder PO3;
 	
+	//Ariezal
+	private ArrayList<Account> accountList;
+	private Account a1;
+	
 
 	@Before
 	public void setUp() throws Exception {
