@@ -2,11 +2,9 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
-	private static final int itemType = 0;
-
 	public static void main(String[] args) {
 
-		// Karthik
+		// Karthik Purchase Order Objects
 		ArrayList<PurchaseOrder> purchaseOrderList = new ArrayList<PurchaseOrder>();
 		purchaseOrderList.add(new PurchaseOrder("Strawberry", 10, 10.50, "21/1/2020"));
 		purchaseOrderList.add(new PurchaseOrder("Kiwi", 11, 7.50, "21/2/2020"));
@@ -229,6 +227,32 @@ public class C206_CaseStudy {
 
 	}
 
+	public static void optionMenu() {
+		C206_CaseStudy.setHeader("OPTION MENU");
+		System.out.println("1. Menu Item");
+		System.out.println("2. Account");
+		System.out.println("3. Order");
+		System.out.println("4. Purchase Order");
+		System.out.println("5. Quit");
+
+	}
+
+	// Bernadette
+	public static void chooseUpdateMenuType() {
+		C206_CaseStudy.setHeader("UPDATE NAME OR PRICE?");
+		System.out.println("1. Update Name of Menu Item");
+		System.out.println("2. Update Price of Menu Item");
+	}
+
+	// Bernadette
+	public static void optionMenuItemList() {
+		C206_CaseStudy.setHeader("MENU ITEM OPTION");
+		System.out.println("1. Update Menu Item - Name and Price");
+		System.out.println("2. View Menu Item by Price Range");
+		System.out.println("3. Search Menu Item by Category");
+	}
+	
+	// Karthik
 	public static void POlistMenu() {
 		C206_CaseStudy.setHeader("PURCHASE ORDER MENU");
 		System.out.println("1. Add Purchase Order Item");
@@ -238,6 +262,7 @@ public class C206_CaseStudy {
 		System.out.println("2. Search item");
 	}
 
+<<<<<<< HEAD
 	public static void optionMenu() {
 		C206_CaseStudy.setHeader("OPTION MENU");
 		System.out.println("1. Menu Item");
@@ -273,6 +298,8 @@ public class C206_CaseStudy {
 		System.out.println("3. Search Menu Item by Category");
 	}
 
+=======
+>>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
@@ -415,7 +442,7 @@ public class C206_CaseStudy {
 	}
 
 	// method to check if the menu items fall under the input range - Bernadette
-	public static boolean doViewByPriceRange(ArrayList<MenuItem> menuItemList, double minPrice, double maxPrice) {
+	public static boolean canViewByPriceRange(ArrayList<MenuItem> menuItemList, double minPrice, double maxPrice) {
 		boolean canViewByPriceRange = false;
 
 		String output = String.format("%-15s %-15s %-10s\n", "CATEGORY", "NAME", "PRICE");
@@ -447,7 +474,7 @@ public class C206_CaseStudy {
 			double minPrice = Helper.readDouble("Enter min. price > ");
 			double maxPrice = Helper.readDouble("Enter max. price > ");
 
-			Boolean canViewByPriceRange = doViewByPriceRange(menuItemList, minPrice, maxPrice);
+			Boolean canViewByPriceRange = canViewByPriceRange(menuItemList, minPrice, maxPrice);
 			if (canViewByPriceRange == false) {
 				System.out.println("No item falls under this range");
 			}
@@ -498,10 +525,14 @@ public class C206_CaseStudy {
 		}
 	}
 
+<<<<<<< HEAD
 	
 //METHODS FOR MENU -------------------------------------------------------------------------------------------------------	
 
 //METHODS FOR ACCOUNT ARIEZAL
+=======
+//METHODS FOR ACCOUNT -----------------------------------------------------------------------------------------
+>>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
 	// Add Account 
 	public static void addAccount(ArrayList<Account>accountList) {
 		C206_CaseStudy.setHeader("ADD NEW ACCOUNT");
@@ -616,6 +647,7 @@ public class C206_CaseStudy {
 		
 		
 	}
+<<<<<<< HEAD
 		// method to check if the account username is updated - Ariezal
 		public static boolean doUpdateAccountUsername(ArrayList<Account> accountList, String username, String password, String userRole) {
 			
@@ -667,10 +699,12 @@ public class C206_CaseStudy {
 
 //METHODS FOR ACCOUNT ARIEZAL ^^^^^^^^
 	
+=======
+>>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
 
+//METHODS FOR ORDER ----------------------------------------------------------------------------------------------
 		
-// Kenneth
-
+    // Kenneth
 	public static String viewAllOrder(ArrayList<Order> orderList, String user) {
 		String s = "";
 		int u = 0;
@@ -819,6 +853,7 @@ public class C206_CaseStudy {
 		return s;
 	}
 
+//METHODS FOR PURCHASE ORDER ----------------------------------------------------------------------------------------------
 	// Karthik
 	
 	// method to create MenuItem object - Karthik
@@ -980,5 +1015,3 @@ public class C206_CaseStudy {
 	}
 
 }
-
-// Ariezal Methods
