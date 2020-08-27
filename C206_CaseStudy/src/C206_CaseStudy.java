@@ -662,18 +662,41 @@ public class C206_CaseStudy {
 			}	
 		}
 			// method for account password update - Ariezal
-//		public static void updateAccountPassword(ArrayList<Account> accountList) {
+		public static void updateAccountPassword(ArrayList<Account> accountList) {
 			
-//			C206_CaseStudy.viewAllAccounts(accountList);
-//			C206_CaseStudy.setHeader("UPDATE ACCOUNT PASSWORD");
+			C206_CaseStudy.viewAllAccounts(accountList);
+			C206_CaseStudy.setHeader("UPDATE ACCOUNT PASSWORD");
 			
-//			String user = Helper
+			String username = Helper.readString("Enter username > ");
+			boolean isFound = false;
 			
-//		}
+			for(int i = 0; i < accountList.size(); i++) {
+				
+			
+				if (username.equalsIgnoreCase(accountList.get(i).getUsername())) {
+					String currentPassword = Helper.readString("Enter current password > ");
+					
+					if(currentPassword.equals(accountList.get(i).getPassword())) {
+						String newPassword = Helper.readString("Enter new password > ");
+						accountList.get(i).setPassword(newPassword);
+						
+					} else {
+						System.out.println("The password is incorrect. ");
+					}
+					isFound = true;
+					break;
+				
+				
+				}
+			}
+			if (isFound == false) {
+				System.out.println("This account does not exist. ");
+			}
+		}
 		
-//		}
-//	}
+		
 	
+		
 
 //METHODS FOR ACCOUNT ARIEZAL ^^^^^^^^
 	
