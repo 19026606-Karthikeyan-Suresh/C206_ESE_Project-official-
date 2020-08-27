@@ -262,15 +262,7 @@ public class C206_CaseStudy {
 		System.out.println("2. Search item");
 	}
 
-<<<<<<< HEAD
-	public static void optionMenu() {
-		C206_CaseStudy.setHeader("OPTION MENU");
-		System.out.println("1. Menu Item");
-		System.out.println("2. Account");
-		System.out.println("3. Order");
-		System.out.println("4. Purchase Order");
 
-	}
 	public static void userAccountTypeMenu() { //Ariezal 
 		C206_CaseStudy.setHeader("USER ACCOUNT TYPE MENU");
 		System.out.println("1. View All");
@@ -281,25 +273,16 @@ public class C206_CaseStudy {
 
 	}
 
-	public static void chooseUpdateMenuType() {
-		C206_CaseStudy.setHeader("UPDATE NAME OR PRICE?");
-		System.out.println("1. Update Name of Menu Item");
-		System.out.println("2. Update Price of Menu Item");
-	}
+
+
 	public static void chooseUpdateAccountType() { // Ariezal
 		C206_CaseStudy.setHeader("UPDATE USERNAME OR PASSWORD?");
 		System.out.println("1. Update username ");
 		System.out.println("2. Update password ");
 	}
-	public static void optionMenuItemList() {
-		C206_CaseStudy.setHeader("MENU ITEM OPTION");
-		System.out.println("1. Update Menu Item - Name and Price");
-		System.out.println("2. View Menu Item by Price Range");
-		System.out.println("3. Search Menu Item by Category");
-	}
 
-=======
->>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
+
+
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
@@ -525,14 +508,14 @@ public class C206_CaseStudy {
 		}
 	}
 
-<<<<<<< HEAD
+
 	
 //METHODS FOR MENU -------------------------------------------------------------------------------------------------------	
 
 //METHODS FOR ACCOUNT ARIEZAL
-=======
+
 //METHODS FOR ACCOUNT -----------------------------------------------------------------------------------------
->>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
+
 	// Add Account 
 	public static void addAccount(ArrayList<Account>accountList) {
 		C206_CaseStudy.setHeader("ADD NEW ACCOUNT");
@@ -647,7 +630,7 @@ public class C206_CaseStudy {
 		
 		
 	}
-<<<<<<< HEAD
+
 		// method to check if the account username is updated - Ariezal
 		public static boolean doUpdateAccountUsername(ArrayList<Account> accountList, String username, String password, String userRole) {
 			
@@ -699,8 +682,7 @@ public class C206_CaseStudy {
 
 //METHODS FOR ACCOUNT ARIEZAL ^^^^^^^^
 	
-=======
->>>>>>> branch 'master' of https://github.com/19026606-Karthikeyan-Suresh/C206_ESE_Project-official-.git
+
 
 //METHODS FOR ORDER ----------------------------------------------------------------------------------------------
 		
