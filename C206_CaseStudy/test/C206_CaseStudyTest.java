@@ -119,7 +119,7 @@ public class C206_CaseStudyTest {
 		assertTrue("Test if the existing menu item can delete from the list", ok);
 		// error condition
 		ok = C206_CaseStudy.doDeleteMenuItem(menuItemList, "Seafood", "Shrimps", 3.00);
-		assertFalse("Test if the existing menu item can delete from the list?", ok);
+		assertFalse("Test if the non-existing menu item can delete from the list?", ok);
 	}
 
 	@Test // Bernadette
@@ -127,12 +127,16 @@ public class C206_CaseStudyTest {
 		// boundary condition
 		assertNotNull("Test if there is valid MenuItem arraylist to add to", menuItemList);
 		C206_CaseStudy.addMenuItem(menuItemList, menu1);
+		
+		// Test if the menu item is updated its name (both category and price remain unchanged)
 		// normal condition
 		Boolean ok = C206_CaseStudy.doUpdateMenuItemName(menuItemList, "Soda", "Coca Cola", 1.50);
-		assertTrue("Test if the existing menu item is updated its name?", ok);
+		assertTrue("Test if the menu item is updated its name?", ok);
+		
+		// Test if the menu item is updated its name (only category remains unchanged)
 		// error condition
 		ok = C206_CaseStudy.doUpdateMenuItemName(menuItemList, "Soda", "Coca Cola", 2.00);
-		assertFalse("Test if the existing menu item is updated its name?", ok);
+		assertFalse("Test if the menu item is updated its name?", ok);
 	}
 
 	@Test // Bernadette
@@ -140,12 +144,16 @@ public class C206_CaseStudyTest {
 		// boundary condition
 		assertNotNull("Test if there is valid MenuItem arraylist to add to", menuItemList);
 		C206_CaseStudy.addMenuItem(menuItemList, menu2);
+		
+		// Test if the menu item is updated its price (both category and name remain unchanged)
 		// normal condition
 		Boolean ok = C206_CaseStudy.doUpdateMenuItemPrice(menuItemList, "Smoothies", "Banana", 3.50);
-		assertTrue("Test if the existing menu item name is updated its price?", ok);
+		assertTrue("Test if the menu item name is updated its price?", ok);
+		
+		// Test if the menu item is updated its price (only category remains unchanged)
 		// error condition
 		ok = C206_CaseStudy.doUpdateMenuItemPrice(menuItemList, "Smoothies", "Blueberry", 3.50);
-		assertFalse("Test if the existing menu item is updated its price?", ok);
+		assertFalse("Test if the menu item is updated its price?", ok);
 	}
 
 	@Test // Bernadette
@@ -160,10 +168,12 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addMenuItem(menuItemList, menu6);
 		assertEquals("Test that Menu Item arraylist size is 6", 6, menuItemList.size());
 
+		// Test if these menu items fall under the price range between $2 to $3
 		// normal condition
-		Boolean ok = C206_CaseStudy.doViewByPriceRange(menuItemList, 2.00, 4.00);
+		Boolean ok = C206_CaseStudy.doViewByPriceRange(menuItemList, 2.00, 3.00);
 		assertTrue("Test if these menu items fall under the range between $2 to $3", ok);
 
+		// Test if these menu items fall under the price range between $4 to $4
 		// error condition
 		ok = C206_CaseStudy.doViewByPriceRange(menuItemList, 4.00, 5.00);
 		assertFalse("Test if these menu items fall under the range between $4 to $5", ok);
@@ -171,7 +181,7 @@ public class C206_CaseStudyTest {
 
 	@Test // Bernadette
 	public void canSearchByCategory() {
-		// Given an empty list, after adding 4 items, test if the arraylist size is 6 -
+		// Given an empty list, after adding 6 items, test if the arraylist size is 6 -
 		// normal condition
 		C206_CaseStudy.addMenuItem(menuItemList, menu1);
 		C206_CaseStudy.addMenuItem(menuItemList, menu2);
@@ -181,13 +191,15 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addMenuItem(menuItemList, menu6);
 		assertEquals("Test that Menu Item arraylist size is 6", 6, menuItemList.size());
 
+		// Test if the menu items can search by Pizzas category (existing category)
 		// normal condition
 		Boolean ok = C206_CaseStudy.canSearchByCategory(menuItemList, "Pizzas");
 		assertTrue("Test if menu items can search by Pizzas category", ok);
 
+		// Test if the menu items can search by Seafood category (non-existing category)
 		// error condition
 		ok = C206_CaseStudy.canSearchByCategory(menuItemList, "Seafood");
-		assertFalse("Test if menu items can search by Seafood", ok);
+		assertFalse("Test if menu items can search by Seafood category", ok);
 
 	}
 
