@@ -96,7 +96,7 @@ public class C206_CaseStudy {
 			} else if (option == 2) { // Ariezal
 				
 				C206_CaseStudy.setHeader("View, Add, Delete Account");
-				userTypeMenu();
+				userAccountTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select type > ");
 
@@ -225,7 +225,7 @@ public class C206_CaseStudy {
 		System.out.println("1. View All");
 		System.out.println("2. Add");
 		System.out.println("3. Delete");
-		System.out.println("4. Update");
+
 
 	}
 
@@ -244,6 +244,15 @@ public class C206_CaseStudy {
 		System.out.println("2. Account");
 		System.out.println("3. Order");
 		System.out.println("4. Purchase Order");
+
+	}
+	public static void userAccountTypeMenu() { //Ariezal 
+		C206_CaseStudy.setHeader("USER ACCOUNT TYPE MENU");
+		System.out.println("1. View All");
+		System.out.println("2. Add");
+		System.out.println("3. Delete");
+		System.out.println("4. Update Account");
+
 
 	}
 
