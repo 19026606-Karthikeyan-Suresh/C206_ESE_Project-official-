@@ -94,7 +94,7 @@ public class C206_CaseStudy {
 			} else if (option == 2) { // Ariezal
 				
 				C206_CaseStudy.setHeader("View, Add, Delete Account");
-				userTypeMenu();
+				userAccountTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select type > ");
 
@@ -109,6 +109,21 @@ public class C206_CaseStudy {
 				} else if (itemType == 3) {
 					// Delete Account
 					C206_CaseStudy.deleteAccount(accountList);
+					
+				} else if (itemType == 4) {
+					// Update Account or Password
+					chooseUpdateAccountType();
+					int chooseUpdateAccount = Helper.readInt("Choose update for account > ");
+
+					if (chooseUpdateAccount == 1) {
+						// update username
+						C206_CaseStudy.updateAccountUsername(accountList);
+					} else if (chooseUpdateAccount == 2) {
+						// update password
+//						C206_CaseStudy.updateAccountPassword(accountList);
+					} else {
+						System.out.println("Invalid update choice");
+					}
 
 				} else {
 					System.out.println("Invalid type");
@@ -211,6 +226,7 @@ public class C206_CaseStudy {
 		System.out.println("2. Add");
 		System.out.println("3. Delete");
 
+
 	}
 
 	public static void optionMenu() {
@@ -247,7 +263,29 @@ public class C206_CaseStudy {
 		System.out.println("4. Change delivery date");
 		System.out.println("5. Search item by item name");
 		System.out.println("6. Seach items by delivery date");
+		System.out.println("2. Search item");
 	}
+
+
+	public static void userAccountTypeMenu() { //Ariezal 
+		C206_CaseStudy.setHeader("USER ACCOUNT TYPE MENU");
+		System.out.println("1. View All");
+		System.out.println("2. Add");
+		System.out.println("3. Delete");
+		System.out.println("4. Update Account");
+
+
+	}
+
+
+
+	public static void chooseUpdateAccountType() { // Ariezal
+		C206_CaseStudy.setHeader("UPDATE USERNAME OR PASSWORD?");
+		System.out.println("1. Update username ");
+		System.out.println("2. Update password ");
+	}
+
+
 
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
@@ -391,7 +429,7 @@ public class C206_CaseStudy {
 	}
 
 	// method to check if the menu items fall under the input range - Bernadette
-	public static boolean doViewByPriceRange(ArrayList<MenuItem> menuItemList, double minPrice, double maxPrice) {
+	public static boolean canViewByPriceRange(ArrayList<MenuItem> menuItemList, double minPrice, double maxPrice) {
 		boolean canViewByPriceRange = false;
 
 		String output = String.format("%-15s %-15s %-10s\n", "CATEGORY", "NAME", "PRICE");
@@ -423,7 +461,7 @@ public class C206_CaseStudy {
 			double minPrice = Helper.readDouble("Enter min. price > ");
 			double maxPrice = Helper.readDouble("Enter max. price > ");
 
-			Boolean canViewByPriceRange = doViewByPriceRange(menuItemList, minPrice, maxPrice);
+			Boolean canViewByPriceRange = canViewByPriceRange(menuItemList, minPrice, maxPrice);
 			if (canViewByPriceRange == false) {
 				System.out.println("No item falls under this range");
 			}
@@ -474,7 +512,14 @@ public class C206_CaseStudy {
 		}
 	}
 
+
+	
+//METHODS FOR MENU -------------------------------------------------------------------------------------------------------	
+
+//METHODS FOR ACCOUNT ARIEZAL
+
 //METHODS FOR ACCOUNT -----------------------------------------------------------------------------------------
+
 	// Add Account 
 	public static void addAccount(ArrayList<Account>accountList) {
 		C206_CaseStudy.setHeader("ADD NEW ACCOUNT");
@@ -483,7 +528,7 @@ public class C206_CaseStudy {
 		String password = Helper.readString("Enter a new password > ");
 		String userRole = Helper.readString("Enter the role > ");
 		
-		// Check for duplicate account
+		// Check for duplicate account - Ariezal
 		boolean isDuplicate = false;
 		
 		for (int i = 0; i < accountList.size(); i++) {
@@ -495,13 +540,13 @@ public class C206_CaseStudy {
 				
 			}
 		}
-		// If account is not duplicated, it will create the account requested by the user.
+		// If account is not duplicated, it will create the account requested by the user. - Ariezal
 		if (isDuplicate == false) {
 			accountList.add(new Account(username, password, userRole));
 			System.out.println("New Account added!"); 
 		}
 	}	
-	//View Account	
+	//View Account	- Ariezal
 	public static void viewAllAccounts (ArrayList<Account>accountList) {
 		C206_CaseStudy.setHeader("VIEW ALL ACCOUNTS");
 		
@@ -514,7 +559,7 @@ public class C206_CaseStudy {
 		System.out.println(output);
 	}
 	
-// To check if the account has been deleted yet
+// To check if the account has been deleted yet - Ariezal
 	public static boolean doDeleteAccount(ArrayList<Account> accountList, String username, String password, String userRole) {
 		boolean isDeleted = false;
 		
@@ -529,10 +574,11 @@ public class C206_CaseStudy {
 			}
 		}
 		return isDeleted;
+
 	}
 	
 
-	// Delete account	
+	// Delete account	- Ariezal
 	public static void deleteAccount (ArrayList<Account>accountList) {
 		C206_CaseStudy.viewAllAccounts(accountList);
 		C206_CaseStudy.setHeader("DELETE AN ACCOUNT");
@@ -547,7 +593,95 @@ public class C206_CaseStudy {
 		} else {
 			System.out.println("Account deleted! ");	
 		}
+		
+		// Update Account - Ariezal
+	}	
+	public static void updateAccount(ArrayList<Account> accountList) {
+		C206_CaseStudy.setHeader("Update Account Details");
+		
+		String username = Helper.readString("Enter username > ");
+		String password = Helper.readString("Enter password> ");
+		
+		boolean isFound = false;
+		
+		for(int i = 0 ; i < accountList.size(); i++ ) {
+			if (username.equalsIgnoreCase(accountList.get(i).getUsername()) 
+					&& password.equalsIgnoreCase(accountList.get(i).getPassword())) {
+				
+				String currentUsername = Helper.readString("Enter current username> ");
+				String currentPassword = Helper.readString("Enter current password> ");
+				if (currentUsername.equals(accountList.get(i).getUsername()) && currentPassword.equals(accountList.get(i).getPassword())) {
+					String newUsername = Helper.readString("Enter new Username > ");
+					String newPassword = Helper.readString("Enter new password > ");
+					
+					accountList.get(i).setUsername(newUsername);
+					accountList.get(i).setPassword(newPassword);
+
+				} else {
+					System.out.println("The username or the password is incorrect.");
+				}
+				isFound = true;
+				break;
+			}
+			if (isFound == false) {
+				System.out.println("This account inputted does not exist.");
+			
+				
+				
+		}
+		
+		}
+		
+		
 	}
+
+		//method for account username update - Ariezal
+		public static void updateAccountUsername(ArrayList<Account>accountList) {
+			C206_CaseStudy.viewAllAccounts(accountList);
+			C206_CaseStudy.setHeader("UPDATE USERNAME");
+			String username = Helper.readString("Enter username > ");
+			
+			boolean isFound = false;
+	
+			
+			for(int i = 0 ; i < accountList.size(); i++) {
+				if (username.equalsIgnoreCase(accountList.get(i).getUsername())) {
+					
+					String password = Helper.readString("Enter password > ");
+					
+					if(username.equals(accountList.get(i).getUsername()) && password.equals(accountList.get(i).getPassword())) {
+						String newUsername = Helper.readString("Enter new username > ");
+						accountList.get(i).setUsername(newUsername);
+						System.out.println("The username has been successfully updated.");
+						
+					} else {
+						System.out.println("The password inputted is incorrect.");
+					}
+					isFound = true;
+					break;
+				}
+			}
+			if(isFound == false) {
+				System.out.println("This account does not exist.");
+			}	
+		}
+			// method for account password update - Ariezal
+//		public static void updateAccountPassword(ArrayList<Account> accountList) {
+			
+//			C206_CaseStudy.viewAllAccounts(accountList);
+//			C206_CaseStudy.setHeader("UPDATE ACCOUNT PASSWORD");
+			
+//			String user = Helper
+			
+//		}
+		
+//		}
+//	}
+	
+
+//METHODS FOR ACCOUNT ARIEZAL ^^^^^^^^
+	
+
 
 //METHODS FOR ORDER ----------------------------------------------------------------------------------------------
 		
