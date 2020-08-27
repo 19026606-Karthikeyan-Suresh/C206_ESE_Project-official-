@@ -1030,11 +1030,11 @@ public class C206_CaseStudy {
 				String SearchByDeliveryDate = Helper.readString("Enter delivery date > ");
 				Boolean CheckByDeliveryDate = CheckByDeliveryDate(purchaseOrderList, SearchByDeliveryDate);
 				if ( CheckByDeliveryDate == false) {
-					System.out.println("Item does not exist");
+					System.out.println("No item is delivered " + SearchByDeliveryDate );
 
 				}
 			} else {
-				System.out.println("Item exists");
+				System.out.println("These are the item being delivered on the date searched");
 				}
 		}
 }
